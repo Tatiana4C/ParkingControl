@@ -1,0 +1,38 @@
+.confirmation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: white;
+    margin-top: -75px;
+}
+
+.confirmation-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: #4472C4;
+    color: white;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #365f9e;
+}
+
+/* Estilo para el texto en la parte inferior izquierda */
+.footer-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+}

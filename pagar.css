@@ -1,0 +1,59 @@
+.admi {
+    display: flex;
+    height: 90vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para el área principal */
+.main-content {
+    width: 100%; /* Hace que el contenedor ocupe todo el ancho del padre */
+    margin: 10px ; /* Centra el contenedor si tiene un ancho fijo */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para el contenedor del formulario */
+.payment-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: #4472C4;
+    color: white;
+    border: none;
+    
+}
+
+.btn-custom:hover {
+    background-color: #365f9e;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.info-display {
+    margin-top: 1rem;
+}
+
+/* Centrar el botón */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Ocultar el botón de pagar por defecto */
+#payButton {
+    display: none;
+}

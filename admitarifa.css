@@ -1,0 +1,7 @@
+.main-content { 
+    width: 100%; /* Hace que el contenedor ocupe todo el ancho del padre */
+    max-width: 1200px; /* Establece un ancho máximo, si es necesario */
+    margin: 10px ; /* Centra el contenedor si tiene un ancho fijo */
+    align-items: center;
+    justify-content: center;
+}

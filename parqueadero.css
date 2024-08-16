@@ -1,0 +1,49 @@
+
+.admi {
+    display: flex;
+    height: 90vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    flex: 1;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table td {
+    border: 1px solid black; /* Agrega un borde para ver las celdas claramente */
+    padding: 10px; /* Aumenta el padding para hacer las celdas más grandes */
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.available {
+    background-color: #d4edda !important; /* Verde claro */
+    color: #155724 !important; /* Verde oscuro */
+}
+
+.occupied {
+    background-color: #f8d7da !important; /* Rojo claro */
+    color: #721c24 !important; /* Rojo oscuro */
+}
+
+.table-container {
+    flex: 1;
+    margin: 10px; /* Ajusta el margen si es necesario */
+    max-width: 45%; /* Ajusta el ancho para que las tablas quepan lado a lado */
+}
+.counter {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.row-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Asegura que las tablas se ajusten en caso de pantalla más pequeña */
+}
+h2 {
+    margin-top: -25px; /* Ajusta este valor según tus necesidades */
+}

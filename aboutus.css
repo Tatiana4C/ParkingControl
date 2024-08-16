@@ -1,0 +1,45 @@
+.btn-toolbar .btn-custom {
+    background-color: white;  /* Fondo blanco */
+    color: black;  /* Texto negro */
+    border: 2px solid #4472C4; /* Borde botones */
+    border-radius: 0; /* Sin borde redondeado */
+    padding: 0; /* Sin padding para mantener la forma cuadrada */
+    flex: 1; /* Hace que los botones crezcan para ocupar el espacio disponible */
+    height: 60px; /* Alto fijo para hacer el botón cuadrado */
+    margin: 0; /* Elimina el margen alrededor del botón */
+    display: flex; /* Utiliza flexbox para centrar el texto */
+    align-items: center; /* Alinea verticalmente el contenido del botón */
+    justify-content: center; /* Alinea horizontalmente el contenido del botón */
+    text-align: center; /* Alinea el texto al centro */
+    
+}
+
+.title {
+    font-size: 3em; /* Tamaño grande para el texto */
+    margin-top: 15px; /* Espacio arriba del texto */
+    margin-bottom: 25px; /* Espacio debajo del texto */
+    text-align: center; /* Alinea verticalmente*/
+}
+
+.content-box {
+    border: 2px solid #4472C4;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.content-box img {
+    max-width: 200px;
+    height: auto;
+}
+
+.content-box .text-content {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}

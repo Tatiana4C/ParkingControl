@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <!-- jQuery -->
+    <script src="libs/jquery-3.7.1.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link href="libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="estadisticas.css">
+</head>
+
+<body>
+    <!-- Encabezado -->
+     <div id="encabezado-placeholder"></div>
+     
+     <hr style="border: 1px solid #4472C4; margin: 0;">
+
+    <div class="admi">
+         <!-- Barra de herramientas lateral -->
+         <div id="barralateral-placeholder"></div>
+
+    <!-- Área principal -->
+    <div class="container mt-5">
+        <h2>Estadísticas del Parqueadero</h2>
+
+        <div class="row">
+            <!-- Ocupación máxima diaria -->
+            <div class="col-md-6 mb-3">
+                <h4>Ocupación Máxima Diaria</h4>
+                <p><span id="ocupacion-maxima">85%</span> de ocupación en el día</p>
+            </div>
+
+            <!-- Promedio de tiempo de estacionamiento -->
+            <div class="col-md-6 mb-3">
+                <h4>Promedio de Tiempo de Estacionamiento</h4>
+                <p><span id="promedio-tiempo">2 horas y 15 minutos</span> promedio de permanencia</p>
+            </div>
+
+            <!-- Horarios de mayor afluencia -->
+            <div class="col-md-6 mb-3">
+                <h4>Horarios de Mayor Afluencia</h4>
+                <p><span id="horarios-pico">10:00 AM - 12:00 PM</span></p>
+            </div>
+
+            <!-- Frecuencia de clientes recurrentes -->
+            <div class="col-md-6 mb-3">
+                <h4>Frecuencia de Clientes Recurrentes</h4>
+                <p><span id="clientes-recurrentes">30%</span> son clientes habituales</p>
+            </div>
+
+            <!-- Ingresos -->
+            <div class="col-md-6 mb-3">
+                <h4>Ingresos</h4>
+                <p>Diarios: <span id="ingresos-diarios">$1,200</span></p>
+                <p>Semanales: <span id="ingresos-semanales">$8,400</span></p>
+                <p>Mensuales: <span id="ingresos-mensuales">$36,000</span></p>
+                <p>Anuales: <span id="ingresos-anuales">$432,000</span></p>
+            </div>
+            
+            <!-- Tarjeta de Transacciones -->
+             <div class="col-md-6">
+                <h4>Transacciones</h4>
+                <p id="transacciones-efectivo">
+                    Efectivo: <span>60%</span>
+                    <span class="monto">Monto total: $12,000</span>
+                </p>
+                <p id="transacciones-tarjeta">
+                    Tarjeta: <span>40%</span>
+                    <span class="monto">Monto total: $8,000</span>
+                </p>
+            </div>
+        </div>
+        <!-- Ocupación por tipo de vehículo -->
+        <div class="col-md-12 mb-3">
+            <h4>Ocupación por Tipo de Vehículo</h4>
+            <p>Motos: <span id="ocupacion-motos">60%</span></p>
+            <p>Carros: <span id="ocupacion-carros">40%</span></p>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $("#encabezado-placeholder").load("encabezado.html");
+        });
+    </script>
+        <script>
+            $(function(){
+                $("#barralateral-placeholder").load("barralateral.html");
+            });
+        </script>
+</body>
+</html>

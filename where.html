@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where</title>
+    <!-- jQuery -->
+    <script src="libs/jquery-3.7.1.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link href="libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="where.css">
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <div id="encabezado-placeholder"></div>
+
+    <!-- Barra de navegación -->
+    <div id="barranavegacion-placeholder"></div>
+
+     <!-- ¿Dónde estamos ubicados? -->
+
+    <div class="container-main">
+        <div class="content-box">
+            
+            <div class="text-content">
+                <p><h3><strong>¿Dónde estamos ubicados?</strong></h3><p>
+                <p>Estamos ubicados en la Carrera 21 número 05 - 12 Riofrío, Valle del Cauca</p>
+                <p>Cerca al parque principal</p>
+
+            </div>
+            <div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.8318222018187!2d-76.2882519564341!3d4.155902740441883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e39d1cc64b8b8f7%3A0x2dac2fe3323a0ed8!2sParque%20Principal%20de%20Riofr%C3%ADo!5e0!3m2!1ses-419!2sco!4v1723331786648!5m2!1ses-419!2sco"
+                    width="450"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $("#encabezado-placeholder").load("encabezado.html");
+        });
+    </script>
+     <script>
+        $(function(){
+            $("#barranavegacion-placeholder").load("barranavegacion.html");
+        });
+    </script>
+</body>
+</html>

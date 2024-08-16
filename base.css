@@ -1,0 +1,102 @@
+ /* Clase personalizada para la barra de navegación */
+ .navbar-custom {
+    padding: 5px 10px; /* Ajuste de padding para reducir el espacio */
+    margin: 0; /* Elimina el margen alrededor del logo */
+    font-size: 2em !important; /* Aumenta el tamaño de la fuente del encabezado */
+    font-weight: bold !important; /* Hacer el texto más grueso */
+}
+
+/* Ajuste para el nombre de la página */
+.navbar-brand span {
+    font-size: 1.3em; /* Aumenta el tamaño de la fuente del nombre de la página */
+    font-weight: bold; /* Hacer el texto más grueso */
+}
+
+/* Clase personalizada para el botón administrador */
+.btn-custom {
+    background-color: white;  /* Fondo blanco */
+    color: black;  /* Texto negro */
+    border: 2px solid #4472C4;  /* Borde azul de 2px */
+    margin: 0; /* Elimina el margen alrededor del botón */
+}
+
+
+/* Clase personalizada para los botones de la barra de herramientas */
+.btn-toolbar {
+    display: flex;
+    flex: 1; /* Hace que la barra de herramientas ocupe el ancho completo del contenedor */
+    align-items: center;
+}
+
+.btn-toolbar .btn-custom {
+    background-color: white;  /* Fondo blanco */
+    color: black;  /* Texto negro */
+    border: 2px solid #4472C4; /* Borde botones */
+    border-radius: 0; /* Sin borde redondeado */
+    padding: 0; /* Sin padding para mantener la forma cuadrada */
+    flex: 1; /* Hace que los botones crezcan para ocupar el espacio disponible */
+    height: 60px; /* Alto fijo para hacer el botón cuadrado */
+    margin: 0; /* Elimina el margen alrededor del botón */
+    display: flex; /* Utiliza flexbox para centrar el texto */
+    align-items: center; /* Alinea verticalmente el contenido del botón */
+    justify-content: center; /* Alinea horizontalmente el contenido del botón */
+    text-align: center; /* Alinea el texto al centro */
+    
+}
+
+/* Clase personalizada para la segunda barra de navegación */
+.navbar-secondary {
+    padding: 0px 0px; /* Ajuste de padding para reducir el espacio */
+}
+
+/* Cambio de color al pasar el ratón por encima */
+.btn-custom:hover {
+    background-color: #4472C4;  /* Fondo azul al hacer hover */
+    color: white;  /* Texto blanco al hacer hover */
+}
+
+/* Estilo para el texto en la parte inferior izquierda */
+.footer-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    }
+
+/* Barra lateral */  
+    .admi {
+        display: flex;
+        height: 90vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }  
+    .sidebar {
+        height: fit-content;
+        background-color: #fff;
+        border-right: 2px #9e9fa1; 
+        box-shadow: 0 0 10px 4px #ccd8ee;
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+    }
+
+    .sidebar button {
+        width: 190px;
+        height: 70px;
+        background-color: white;
+        color: black;
+        border: 1px solid #4472C4;
+        margin-bottom: 10px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .sidebar button:hover {
+        background-color: #4472C4;
+        color: white;
+    }

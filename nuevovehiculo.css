@@ -1,0 +1,73 @@
+.admi {
+    display: flex;
+    height: 80vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para el área principal */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15rem;
+}
+
+/* Estilo para el formulario de ingreso de vehículos */
+.vehicle-form {
+    width: 80%;
+    max-width: 350px;
+    background-color: #e6e8f1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.vehicle-form h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4472C4;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccd8ee;
+    border-radius: 5px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccd8ee;
+    border-radius: 5px;
+}
+
+.btn-ingreso {
+    background-color: #4472C4;
+    color: rgb(226, 224, 230);
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+.btn-ingreso:hover{
+    background-color: #3b5788;  /* Fondo azul al hacer hover */
+    color: white;  /* Texto blanco al hacer hover */
+}
+.current-time {
+    font-weight: bold;
+}

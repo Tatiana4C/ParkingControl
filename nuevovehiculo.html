@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso vehiculo</title>
+    <!-- jQuery -->
+    <script src="libs/jquery-3.7.1.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link href="libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="nuevovehiculo.css">
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <div id="encabezado-placeholder"></div>
+     
+    <hr style="border: 1px solid #4472C4; margin: 0;">
+ 
+    <div class="admi">
+        <!-- Barra de herramientas lateral -->
+         <div id="barralateral-placeholder"></div>
+
+    <!-- Ingreso nuevo vehiculo -->
+    <div class="main-content">
+        <div class="vehicle-form">
+            <h3>Ingresar nuevo vehículo</h3>
+            <div class="form-group">
+                <label for="vehicle-plate">Placa del Vehículo</label>
+                <input type="text" class="form-control" id="vehicle-plate" placeholder="Ingrese la placa del vehículo" required>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="vehicle-type">Tipo de Automotor</label>
+                <select class="form-select" id="vehicle-type">
+                    <option value="carro">Seleccione</option>
+                    <option value="carro">Carro</option>
+                    <option value="moto">Moto</option>
+                </select>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="space-number">Espacio Disponble</label>
+                <select class="form-select" id="space-number">
+                    <!-- Opciones de espacios serán añadidas dinámicamente -->
+                </select>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="rate-type">Tarifa</label>
+                <select class="form-select" id="rate-type">
+                    <option value="hora">Hora</option>
+                    <option value="dia">Día</option>
+                    <option value="mes">Mes</option>
+                    <option value="anio">Año</option>
+                </select>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="entry-time">Hora de Ingreso</label>
+                <p class="current-time" id="entry-time"></p>
+            </div>
+            <button type="submit" class="btn btn-ingreso">Ingresar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Mostrar la hora actual en el campo "Hora de Ingreso" -->
+<script>
+    $(document).ready(function() {
+        var currentTime = new Date().toLocaleTimeString();
+        $('#entry-time').text(currentTime);
+
+        // Función para actualizar opciones de espacio
+        function updateSpaceOptions(type) {
+            var $spaceSelect = $('#space-number');
+            $spaceSelect.empty(); // Limpiar opciones actuales
+            var options = [];
+            
+            if (type === 'carro') {
+                for (var i = 1; i <= 14; i++) {
+                    options.push('<option value="' + i + '">' + i + '</option>');
+                }
+            } else if (type === 'moto') {
+                for (var i = 1; i <= 30; i++) {
+                    options.push('<option value="' + i + '">' + i + '</option>');
+                }
+            }
+            
+            $spaceSelect.append(options.join(''));
+        }
+
+        $('#vehicle-type').on('change', function() {
+            var selectedType = $(this).val();
+            updateSpaceOptions(selectedType);
+        });
+    });
+</script>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $("#encabezado-placeholder").load("encabezado.html");
+        });
+    </script>
+        <script>
+            $(function(){
+                $("#barralateral-placeholder").load("barralateral.html");
+            });
+        </script>
+</body>
+</html>

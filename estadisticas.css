@@ -1,0 +1,110 @@
+/* estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #4472C4;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+h4 {
+    color: #4472C4;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #4472C4;
+    padding-bottom: 5px;
+}
+
+/* Estilo para las tarjetas de estadísticas */
+.col-md-6, .col-md-12 {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+p span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo para los valores específicos */
+#ocupacion-maxima, #promedio-tiempo, #horarios-pico, #clientes-recurrentes,
+#ingresos-diarios, #ingresos-semanales, #ingresos-mensuales, #ingresos-anuales,
+#ocupacion-motos, #ocupacion-carros, #transacciones-efectivo, #transacciones-tarjeta,
+#tipos-motos, #tipos-carros {
+    font-size: 1.5em;
+    color: #4472C4;
+}
+
+/* Estilo para secciones con múltiples líneas */
+.col-md-12 p {
+    margin-bottom: 10px;
+}
+
+/* Estilo para resaltar ingresos */
+#ingresos-diarios, #ingresos-semanales, #ingresos-mensuales, #ingresos-anuales {
+    color: #28a745;
+}
+
+/* Estilo para mostrar los montos en efectivo y tarjeta */
+#transacciones-efectivo span, #transacciones-tarjeta span {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 5px;
+    color: #007bff;
+}
+
+#transacciones-efectivo span.monto, #transacciones-tarjeta span.monto {
+    font-size: 1.2em;
+    color: #28a745;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    #ocupacion-maxima, #promedio-tiempo, #horarios-pico, #clientes-recurrentes,
+    #ingresos-diarios, #ingresos-semanales, #ingresos-mensuales, #ingresos-anuales,
+    #ocupacion-motos, #ocupacion-carros, #transacciones-efectivo, #transacciones-tarjeta,
+    #tipos-motos, #tipos-carros {
+        font-size: 1.2em;
+    }
+
+    #transacciones-efectivo span, #transacciones-tarjeta span {
+        font-size: 1.2em;
+    }
+}

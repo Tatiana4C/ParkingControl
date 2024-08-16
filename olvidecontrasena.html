@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olvidé contraseña</title>
+    <!-- jQuery -->
+    <script src="libs/jquery-3.7.1.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link href="libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="olvidecontrasena.css">
+
+    <style>
+        .title {
+            font-size: 3em; /* Tamaño grande para el texto */
+            margin-bottom: 18px; /* Espacio debajo del texto */
+            align-items: center; /* Alinea verticalmente el contenido del botón */
+        }
+
+        .reset-password-page {
+            display: flex;
+            justify-content: center;
+            margin-top: 85px;
+            height: 40vh;
+            background-color: white;
+        }
+
+        .reset-password-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: white(0, 0%, 100%);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn-custom {
+            background-color: #4472C4;
+            color: white;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background-color: #365f9e;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <div id="encabezado-placeholder"></div>
+
+    <!-- Barra de navegación -->
+    <div id="barranavegacion-placeholder"></div>
+
+    <!-- Restablecer contraseña -->
+    <div class="reset-password-page">
+        <div class="reset-password-container">
+            <h3>Recuperar contraseña</h3>
+            <form id="resetPasswordForm">
+                <div class="form-group">
+                    <label for="email">Ingrese su correo electrónico <p></p></label>
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
+                </div>
+                <p></p>
+                <button type="submit" class="btn btn-custom">Enviar</button>
+            </form>
+            <div id="responseMessage" class="mt-3"></div>
+        </div>
+    </div>
+
+    <!-- Agregar jQuery para la funcionalidad del formulario -->
+    <script src="libs/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#resetPasswordForm').on('submit', function(e) {
+                e.preventDefault();
+                var email = $('#email').val();
+
+                // Aquí puedes agregar lógica para enviar un correo con las instrucciones de recuperación de contraseña
+                $('#responseMessage').text('Te hemos enviado un correo con instrucciones para restablecer tu contraseña.');
+            });
+        });
+    </script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $("#encabezado-placeholder").load("encabezado.html");
+        });
+    </script>
+     <script>
+        $(function(){
+            $("#barranavegacion-placeholder").load("barranavegacion.html");
+        });
+    </script>
+</body>
+</html>

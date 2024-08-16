@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parqueadero</title>
+    <!-- jQuery -->
+    <script src="libs/jquery-3.7.1.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link href="libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="parqueadero.css">
+</head>
+
+<body>
+    <!-- Encabezado -->
+     <div id="encabezado-placeholder"></div>
+     
+     <hr style="border: 1px solid #4472C4; margin: 0;">
+
+    <div class="admi">
+         <!-- Barra de herramientas lateral -->
+         <div id="barralateral-placeholder"></div>
+
+    <!-- Área principal -->
+    <div class="container mt-5">
+        <h2>Disponibilidad de puestos de parqueo</h2>
+        <div class="row row-container">
+            <!-- Tabla de Motos -->
+            <div class="table-container">
+                <h3>Motos</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Puesto</th>
+                            <th>Puesto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="motoTable">
+                        <!-- Generar 30 filas en 2 columnas -->
+                    </tbody>
+                </table>
+                <div id="motoCounter" class="counter">
+                    Puestos Disponibles: 0
+                </div>
+            </div>
+
+            <!-- Tabla de Carros -->
+            <div class="table-container">
+                <h3>Carros</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Puesto</th>
+                            <th>Puesto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carTable">
+                        <!-- Generar 14 filas en 2 columnas -->
+                    </tbody>
+                </table>
+                <div id="carCounter" class="counter">
+                    Puestos Disponibles: 0
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        function createTableRows(tableId, totalSpaces) {
+            const tableBody = document.getElementById(tableId);
+            if (!tableBody) {
+                console.error('Table not found:', tableId);
+                return;
+            }
+            console.log('Creating rows for:', tableId);
+            for (let i = 1; i <= totalSpaces; i++) {
+                if ((i - 1) % 2 === 0) {
+                    let row = document.createElement('tr');
+                    let cell1 = document.createElement('td');
+                    let cell2 = document.createElement('td');
+
+                    cell1.textContent = i;
+                    cell1.className = 'available'; // Por defecto, todos los puestos están disponibles
+                    cell2.textContent = (i + 1);
+                    cell2.className = 'available'; // Por defecto, todos los puestos están disponibles
+
+                    cell1.onclick = function() {
+                        toggleCellState(cell1);
+                    };
+                    cell2.onclick = function() {
+                        toggleCellState(cell2);
+                    };
+
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+        
+        function toggleCellState(cell) {
+            console.log('Cell clicked:', cell.textContent);
+            if (cell.classList.contains('available')) {
+                console.log('Changing cell to occupied');
+                cell.classList.remove('available');
+                cell.classList.add('occupied');
+
+            } else {
+                console.log('Changing cell to available');
+                cell.classList.remove('occupied');
+                cell.classList.add('available');
+            }
+            updateCounters();
+        }
+
+        function updateCounters() {
+            const availableMotos = document.querySelectorAll('#motoTable .available').length;
+            const availableCars = document.querySelectorAll('#carTable .available').length;
+
+            console.log('Updating counters');
+            document.getElementById('motoCounter').textContent = 'Puestos Disponibles: ' + availableMotos;
+            document.getElementById('carCounter').textContent = 'Puestos Disponibles: ' + availableCars;
+        }
+
+        // Crear las tablas
+        createTableRows('motoTable', 30);
+        createTableRows('carTable', 14);
+
+        // Actualizar los contadores al cargar la página
+        updateCounters();
+    };
+</script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $("#encabezado-placeholder").load("encabezado.html");
+        });
+    </script>
+        <script>
+            $(function(){
+                $("#barralateral-placeholder").load("barralateral.html");
+            });
+        </script>
+</body>
+</html>

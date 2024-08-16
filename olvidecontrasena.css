@@ -1,0 +1,23 @@
+.title {
+    font-size: 3em; /* Tamaño grande para el texto */
+    margin-bottom: 18px; /* Espacio debajo del texto */
+    align-items: center; /* Alinea verticalmente el contenido del botón */
+}
+
+.reset-password-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 85px;
+    height: 40vh;
+    background-color: white;
+}
+
+.reset-password-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: white(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}

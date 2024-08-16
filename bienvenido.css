@@ -1,0 +1,14 @@
+/* Estilo para el área principal */
+.main-content {
+    flex: 1;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-message {
+    color: black;
+    font-size: 2em !important; /* Aumenta el tamaño de la fuente del encabezado */
+    font-weight: bold !important; /* Hacer el texto más grueso */
+}
