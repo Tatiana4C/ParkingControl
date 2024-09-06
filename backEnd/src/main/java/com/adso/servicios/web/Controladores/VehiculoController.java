@@ -13,26 +13,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adso.servicios.web.Entidades.Parqueadero;
-import com.adso.servicios.web.Servicios.Interfaces.ParqueaderoInt;
+import com.adso.servicios.web.Entidades.Vehiculo;
+import com.adso.servicios.web.Servicios.Interfaces.VehiculoInt;
 
 @RestController
+@RequestMapping("/vehiculosestacionados")
+public class VehiculoController {
 
-@RequestMapping("/parqueadero")
-public class ParqueaderoController {
-    private ParqueaderoInt servicio;
+    private VehiculoInt servicio;
 
     @CrossOrigin(origins = "*")
     @GetMapping
-    public ResponseEntity<?> listarParqueadero() {
+    public ResponseEntity<?> listCarParked() {
         return ResponseEntity.ok(servicio.findAll());
     }
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-    public ResponseEntity<?> listarParqueaderoById(@PathVariable Integer id) {
-        Optional<Parqueadero> parqueadero = Optional.empty();
-        if (parqueadero.isPresent()) {
+    public ResponseEntity<?> listCarParkedById(@PathVariable Integer id) {
+        Optional<Vehiculo> vehiculo = Optional.empty();
+        if (vehiculo.isPresent()) {
             return ResponseEntity.ok(servicio.findById(id));
         }
         return ResponseEntity.notFound().build();
@@ -40,24 +40,22 @@ public class ParqueaderoController {
 
     @CrossOrigin(origins = "*")
     @PostMapping
-    public ResponseEntity<?> crearParqueadero(@RequestBody Parqueadero parqueadero) {
-        return ResponseEntity.ok(servicio.save(parqueadero));
-
+    public ResponseEntity<?> addCarParked(@RequestBody Vehiculo vehiculo) {
+        return ResponseEntity.ok(servicio.save(vehiculo));
     }
 
     @CrossOrigin(origins = "*")
     @PutMapping
-    public ResponseEntity<?> editarParqueadero(@RequestBody Parqueadero parqueadero) {
-        return ResponseEntity.ok(servicio.save(parqueadero));
+    public ResponseEntity<?> editCarParked(@RequestBody Vehiculo vehiculo) {
+        return ResponseEntity.ok(servicio.save(vehiculo));
     }
 
     @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarParqueadero(@PathVariable Integer id) {
-        Optional<Parqueadero> parqueadero = Optional.empty();
-        if (parqueadero.isPresent()) {
+    public ResponseEntity<?> deleteCarParked(@PathVariable Integer id) {
+        Optional<Vehiculo> vehiculo = Optional.empty();
+        if (vehiculo.isPresent()) {
             servicio.delete(id);
-
         }
         return ResponseEntity.ok().build();
     }

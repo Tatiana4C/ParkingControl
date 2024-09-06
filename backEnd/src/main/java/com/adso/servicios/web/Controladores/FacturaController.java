@@ -13,26 +13,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adso.servicios.web.Entidades.Parqueadero;
-import com.adso.servicios.web.Servicios.Interfaces.ParqueaderoInt;
+import com.adso.servicios.web.Entidades.Factura;
+
+import com.adso.servicios.web.Entidades.Vehiculo;
+import com.adso.servicios.web.Servicios.Interfaces.FacturaInt;
 
 @RestController
-
-@RequestMapping("/parqueadero")
-public class ParqueaderoController {
-    private ParqueaderoInt servicio;
+@RequestMapping("/factura")
+public class FacturaController {
+    private FacturaInt servicio;
 
     @CrossOrigin(origins = "*")
     @GetMapping
-    public ResponseEntity<?> listarParqueadero() {
+    public ResponseEntity<?> listarFactura() {
         return ResponseEntity.ok(servicio.findAll());
     }
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-    public ResponseEntity<?> listarParqueaderoById(@PathVariable Integer id) {
-        Optional<Parqueadero> parqueadero = Optional.empty();
-        if (parqueadero.isPresent()) {
+    public ResponseEntity<?> listarFacturaById(@PathVariable Integer id) {
+        Optional<Vehiculo> car = Optional.empty();
+        if (car.isPresent()) {
             return ResponseEntity.ok(servicio.findById(id));
         }
         return ResponseEntity.notFound().build();
@@ -40,23 +41,23 @@ public class ParqueaderoController {
 
     @CrossOrigin(origins = "*")
     @PostMapping
-    public ResponseEntity<?> crearParqueadero(@RequestBody Parqueadero parqueadero) {
-        return ResponseEntity.ok(servicio.save(parqueadero));
+    public ResponseEntity<?> crearFactura(@RequestBody Factura factura) {
+        return (ResponseEntity<?>) ResponseEntity.ok(factura);
 
     }
 
     @CrossOrigin(origins = "*")
     @PutMapping
-    public ResponseEntity<?> editarParqueadero(@RequestBody Parqueadero parqueadero) {
-        return ResponseEntity.ok(servicio.save(parqueadero));
+    public ResponseEntity<?> editarFactura(@RequestBody Factura factura) {
+        return (ResponseEntity<?>) ResponseEntity.ok();
     }
 
     @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarParqueadero(@PathVariable Integer id) {
-        Optional<Parqueadero> parqueadero = Optional.empty();
-        if (parqueadero.isPresent()) {
-            servicio.delete(id);
+    public ResponseEntity<?> eliminarFactura(@PathVariable Integer id) {
+        Optional<Factura> factura = Optional.empty();
+        if (factura.isPresent()) {
+            servicio.delete(factura.get());
 
         }
         return ResponseEntity.ok().build();

@@ -2,34 +2,38 @@ package com.adso.servicios.web.Servicios.Implementaciones;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.adso.servicios.web.Entidades.Parqueadero;
+import com.adso.servicios.web.Repositorios.ParqueaderoRepository;
 import com.adso.servicios.web.Servicios.Interfaces.ParqueaderoInt;
 
 @Service
 public class ParqueaderoImp implements ParqueaderoInt {
 
+    @Autowired
+    private ParqueaderoRepository repository;
+
     @Override
-    public List<ParqueaderoInt> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    public List<Parqueadero> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public Optional<ParqueaderoInt> findById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    public Optional<Parqueadero> findById(Integer id) {
+        return repository.findById(id);
     }
 
     @Override
-    public ParqueaderoInt save(ParqueaderoInt parqueadero) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    public Parqueadero save(Parqueadero parqueadero) {
+        return repository.save(parqueadero);
     }
 
     @Override
     public void delete(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        repository.deleteById(id);
     }
 
 }
