@@ -2,6 +2,7 @@ package com.adso.servicios.web.Controladores;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,9 +19,9 @@ import com.adso.servicios.web.Entidades.VehiculoRegistrado;
 import com.adso.servicios.web.Servicios.Interfaces.VehiculoRegistradoInt;
 
 @RestController
-@RequestMapping("/vehiculosRegistrados")
+@RequestMapping("/api/vehiculosRegistrados")
 public class VehiculoRegistradoController {
-
+    @Autowired
     private VehiculoRegistradoInt servicio;
 
     @CrossOrigin(origins = "*")
@@ -31,10 +32,10 @@ public class VehiculoRegistradoController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-    public ResponseEntity<?> listCarRegisterById(@PathVariable Integer id) {
-        Optional<VehiculoRegistrado> vehiculoRegistrado = Optional.empty();
+    public ResponseEntity<?> listCarRegisterById(@PathVariable(value = "id") Integer id) {
+        Optional<VehiculoRegistrado> vehiculoRegistrado = servicio.findById(id);
         if (vehiculoRegistrado.isPresent()) {
-            return ResponseEntity.ok(servicio.findById(id));
+            return ResponseEntity.ok(vehiculoRegistrado);
         }
 
         return ResponseEntity.notFound().build();
@@ -55,10 +56,11 @@ public class VehiculoRegistradoController {
 
     @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCarRegister(@RequestBody Integer id) {
-        Optional<VehiculoRegistrado> vehiculoRegistrado = Optional.empty();
+    public ResponseEntity<?> deleteCarRegister(@PathVariable(value = "id") Integer id) {
+        Optional<VehiculoRegistrado> vehiculoRegistrado = servicio.findById(id);
         if (vehiculoRegistrado.isPresent()) {
             servicio.delete(id);
+            return ResponseEntity.ok(vehiculoRegistrado);
 
         }
         return ResponseEntity.ok().build();
