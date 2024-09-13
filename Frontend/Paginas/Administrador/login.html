@@ -27,12 +27,12 @@
             <h1>Iniciar sesión</h1>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="username" placeholder="Ingrese su nombre de usuario" required>
+                    <label for="username">Email del usuario</label>
+                    <input type="text" class="form-control" id="email" placeholder="Ingrese su Email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" required>
+                    <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña" required>
                 </div>
                 <div class="btn-custom">
                     <button type="submit" class="btn btn-custom btn-block">Iniciar sesión</button>
@@ -42,21 +42,10 @@
                 </div>
             </form>
         </div>
-    
-        <!-- Agregar jQuery para la funcionalidad del formulario -->
-        <script>
-            $(document).ready(function() {
-                $('#loginForm').on('submit', function(e) {
-                    e.preventDefault();
-                    var username = $('#username').val();
-                    var password = $('#password').val();
-    
-                    // Aquí puedes agregar lógica para autenticar al usuario
-                    alert('Nombre de usuario: ' + username + '\nContraseña: ' + password);
-                });
-            });
-        </script>
     </div>    
+
+    <!-- JS del formulario -->
+    <script src="../../javascript/login.js"></script>
      
     <!-- Bootstrap Bundle with Popper -->
     <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
@@ -70,5 +59,6 @@
             $("#barranavegacion-placeholder").load("../Publico/barranavegacion.html");
         });
     </script>
+
 </body>
 </html>

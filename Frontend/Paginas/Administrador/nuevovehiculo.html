@@ -48,17 +48,6 @@
                     <!-- Opciones de espacios serán añadidas dinámicamente -->
                 </select>
             </div>
-            <p></p>
-            <div class="form-group">
-                <label for="rate-type">Tarifa</label>
-                <select class="form-select" id="rate-type">
-                    <option value="hora">Hora</option>
-                    <option value="dia">Día</option>
-                    <option value="mes">Mes</option>
-                    <option value="anio">Año</option>
-                </select>
-            </div>
-            <p></p>
             <div class="form-group">
                 <label for="entry-time">Hora de Ingreso</label>
                 <p class="current-time" id="entry-time"></p>
@@ -68,37 +57,8 @@
     </div>
 </div>
 
-<!-- Mostrar la hora actual en el campo "Hora de Ingreso" -->
-<script>
-    $(document).ready(function() {
-        var currentTime = new Date().toLocaleTimeString();
-        $('#entry-time').text(currentTime);
-
-        // Función para actualizar opciones de espacio
-        function updateSpaceOptions(type) {
-            var $spaceSelect = $('#space-number');
-            $spaceSelect.empty(); // Limpiar opciones actuales
-            var options = [];
-            
-            if (type === 'carro') {
-                for (var i = 1; i <= 14; i++) {
-                    options.push('<option value="' + i + '">' + i + '</option>');
-                }
-            } else if (type === 'moto') {
-                for (var i = 1; i <= 30; i++) {
-                    options.push('<option value="' + i + '">' + i + '</option>');
-                }
-            }
-            
-            $spaceSelect.append(options.join(''));
-        }
-
-        $('#vehicle-type').on('change', function() {
-            var selectedType = $(this).val();
-            updateSpaceOptions(selectedType);
-        });
-    });
-</script>
+    <!-- JS del formulario -->
+    <script src="../../javascript/nuevoVehiculo.js"></script>
 
 
     <!-- Bootstrap Bundle with Popper -->

@@ -17,7 +17,7 @@ import com.adso.servicios.web.Entidades.Vehiculo;
 import com.adso.servicios.web.Servicios.Interfaces.VehiculoInt;
 
 @RestController
-@RequestMapping("/vehiculosestacionados")
+@RequestMapping("/api/vehiculosestacionados")
 public class VehiculoController {
 
     private VehiculoInt servicio;

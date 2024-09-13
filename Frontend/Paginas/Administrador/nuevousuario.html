@@ -12,6 +12,7 @@
     <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
     <link rel="stylesheet" href="../../Estilo/Todos/base.css">
     <link rel="stylesheet" href="../../Estilo/Estilo-admi/nuevousuario.css">
+
 </head>
 
 <body>
@@ -29,7 +30,7 @@
         <h2>Crear nuevo usuario</h2>
         <form id="form-nuevo-usuario">
             <div class="mb-3">
-                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" required>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre de usuario" required>
             </div>
             <div class="mb-3">
                 <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
@@ -38,42 +39,18 @@
                 <input type="email" class="form-control" id="confirm-email" placeholder="Repite tu correo electrónico" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" id="password" placeholder="Escribe tu contraseña" required>
+                <input type="contrasena" class="form-control" id="contrasena" placeholder="Escribe tu contraseña" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" id="confirm-password" placeholder="Repite tu contraseña" required>
+                <input type="contrasena" class="form-control" id="confirm-contrasena" placeholder="Repite tu contraseña" required>
             </div>
             <button type="submit" class="btn btn-primary">Crear usuario</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('form-nuevo-usuario').addEventListener('submit', function(event) {
-            // Obtener los valores de los campos de correo y contraseñas
-            var email = document.getElementById('email').value;
-            var confirmEmail = document.getElementById('confirm-email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-
-            // Verificar que los correos sean iguales
-            if (email !== confirmEmail) {
-                alert('Los correos electrónicos no coinciden.');
-                event.preventDefault(); // Evitar el envío del formulario
-                return;
-            }
-
-            // Verificar que las contraseñas sean iguales
-            if (password !== confirmPassword) {
-                alert('Las contraseñas no coinciden.');
-                event.preventDefault(); // Evitar el envío del formulario
-                return;
-            }
-
-            // Si todo está correcto, permitir el envío del formulario
-        });
-    </script>
-
     </div>
+
+    <!-- JS del formulario -->
+    <script src="../../javascript/nuevoUsuario.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
@@ -89,5 +66,6 @@
                 $("#barralateral-placeholder").load("barralateral.html");
             });
         </script>
+    
 </body>
 </html>

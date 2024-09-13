@@ -19,7 +19,7 @@ import com.adso.servicios.web.Entidades.Administradores;
 import com.adso.servicios.web.Servicios.Interfaces.AdministradorInt;
 
 @RestController
-@RequestMapping("/administradores")
+@RequestMapping("/api/administradores")
 public class AdminController {
 
     private AdministradorInt servicio;
