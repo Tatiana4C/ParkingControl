@@ -5,16 +5,20 @@
 }
 
 .input-container {
+    flex: 1;
     width: 80%; /* Ajusta el ancho del cuadro de texto */
     max-width: 600px; /* Ancho máximo del cuadro de texto */
     margin-bottom: 18px; /* Espacio debajo del cuadro de texto */
     align-items: center; /* Alinea verticalmente el contenido del botón */
+    
 }
 
 .table-container {
-display: flex;
-justify-content: center;
-align-items: center;}
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 table {
     width: 80%;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where</title>
+    <title>Sobren nosotros</title>
     <!-- jQuery -->
     <script src="../../libs/jquery-3.7.1.js"></script> 
     <!-- Bootstrap CSS -->
@@ -15,11 +15,31 @@
 </head>
 
 <body>
-   <!-- Encabezado -->
-   <div id="encabezado-placeholder"></div>
+<!-- Encabezado -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
+            <span><strong>ParkingControl</strong></span>
+        </a>
+        <div class="ml-auto">
+            <button class="btn btn-custom" onclick= "location.href='../Administrador/login.html'">Administrador</button>
+        </div>
+    </div>
+</nav>
 
-   <!-- Barra de navegación -->
-   <div id="barranavegacion-placeholder"></div>
+<!-- Barra de navegación -->
+<div id="barranavegacion-placeholder"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-secondary">
+    <div class="container-fluid">
+        <div class="btn-toolbar" role="toolbar">
+            <button class="btn btn-custom" onclick= "location.href='aboutus.html'" >Sobre nosotros</button>
+            <button class="btn btn-custom" onclick= "location.href='where.html'">¿Dónde estamos ubicados?</button>
+            <button class="btn btn-custom" onclick= "location.href='tarifas.html'">Planes y tarifas</button>
+        </div>
+    </div>
+</nav>
+
 
      <!-- Sobre nosotros -->
     <!-- Título de la página -->
@@ -43,17 +63,11 @@
         </div>
     </div>
 
+    <div class="footer">
+        Horario de atención: Lun a dom de 05:00 a.m a 10:00 p.m <p></p>
+        Ubicación: Carrera 21 número 05 - 12 Riofrío, Valle del Cauca. </div>
+        
     <!-- Bootstrap Bundle with Popper -->
-    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function(){
-            $("#encabezado-placeholder").load("../Ambos/encabezado.html");
-        });
-    </script>
-     <script>
-        $(function(){
-            $("#barranavegacion-placeholder").load("barranavegacion.html");
-        });
-    </script>
+    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

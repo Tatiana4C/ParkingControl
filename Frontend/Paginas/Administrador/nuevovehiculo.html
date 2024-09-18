@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where</title>
+    <title>Nuevo vehiculo</title>
     <!-- jQuery -->
     <script src="../../libs/jquery-3.7.1.js"></script> 
     <!-- Bootstrap CSS -->
@@ -16,7 +16,13 @@
 
 <body>
     <!-- Encabezado -->
-    <div id="encabezado-placeholder"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Publico/index.html">
+            <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
+            <span><strong>ParkingControl</strong></span></a>
+        </div>
+    </nav>
      
     <hr style="border: 1px solid #4472C4; margin: 0;">
  
@@ -24,52 +30,82 @@
         <!-- Barra de herramientas lateral -->
          <div id="barralateral-placeholder"></div>
 
-    <!-- Ingreso nuevo vehiculo -->
-    <div class="main-content">
-        <div class="vehicle-form">
-            <h3>Ingresar nuevo vehículo</h3>
-            <div class="form-group">
-                <label for="vehicle-plate">Placa del Vehículo</label>
-                <input type="text" class="form-control" id="vehicle-plate" placeholder="Ingrese la placa del vehículo" required>
+        <!-- Ingreso nuevo vehiculo -->
+        <div class="main-content">
+            <div class="vehicle-form">
+                <h3>Ingresar nuevo vehículo</h3>
+                
+                <div class="form-group">
+                    <label for="placa">Placa del Vehículo</label>
+                    <input type="text" class="form-control" id="placa" placeholder="Ingrese la placa del vehículo" required>
+                </div>
+                <p></p>
+                
+                <div class="form-group">
+                    <label for="tipoVehiculo">Tipo de Automotor</label>
+                    <select class="form-select" id="tipoVehiculo">
+                        <option value="null">Seleccione</option>
+                        <option value="carro">Carro</option>
+                        <option value="moto">Moto</option>
+                    </select>
+                </div>
+                <p></p>
+
+                <div class="form-group">
+                    <label for="marcaVehiculo">Marca del Vehículo</label>
+                    <select class="form-select" id="marcaVehiculo">
+                        <!-- Opciones serán añadidas dinámicamente según el tipo de vehículo -->
+                    </select>
+                </div>
+                <p></p>
+                
+                <div class="form-group">
+                    <label for="color">Color del Vehículo</label>
+                    <select class="form-select" id="color">
+                        <option value="Seleccione">Seleccione</option>
+                        <option value="blanco">Blanco</option>
+                        <option value="negro">Negro</option>
+                        <option value="gris">Gris</option>
+                        <option value="plata">Plata</option>
+                        <option value="rojo">Rojo</option>
+                        <option value="azul">Azul</option>
+                        <option value="verde">Verde</option>
+                        <option value="amarillo">Amarillo</option>
+                        <option value="naranja">Naranja</option>
+                        <option value="marrón">Marrón</option>
+                        <option value="violeta">Violeta</option>
+                        <option value="beige">Beige</option>
+                        <option value="dorado">Dorado</option>
+                        <option value="rosado">Rosado</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <p></p>
+                
+                <div class="form-group">
+                    <label for="puesto">Espacio Disponible</label>
+                    <select class="form-select" id="puesto">
+                        <!-- Opciones de espacios serán añadidas dinámicamente -->
+                    </select>
+                </div>
+                <p></p>
+
+                <div class="form-group">
+                    <label for="fechaIngreso">Hora de Ingreso</label>
+                    <p class="current-time" id="fechaIngreso"></p>
+                </div>
+                <button type="submit" class="btn btn-ingreso">Ingresar</button>
             </div>
-            <p></p>
-            <div class="form-group">
-                <label for="vehicle-type">Tipo de Automotor</label>
-                <select class="form-select" id="vehicle-type">
-                    <option value="carro">Seleccione</option>
-                    <option value="carro">Carro</option>
-                    <option value="moto">Moto</option>
-                </select>
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label for="space-number">Espacio Disponble</label>
-                <select class="form-select" id="space-number">
-                    <!-- Opciones de espacios serán añadidas dinámicamente -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="entry-time">Hora de Ingreso</label>
-                <p class="current-time" id="entry-time"></p>
-            </div>
-            <button type="submit" class="btn btn-ingreso">Ingresar</button>
         </div>
     </div>
-</div>
 
     <!-- JS del formulario -->
     <script src="../../javascript/nuevoVehiculo.js"></script>
 
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function(){
-            $("#encabezado-placeholder").load("../Ambos/encabezado.html");
-        });
-    </script>
+    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    
         <script>
             $(function(){
                 $("#barralateral-placeholder").load("barralateral.html");

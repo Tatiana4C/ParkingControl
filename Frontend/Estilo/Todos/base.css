@@ -55,48 +55,47 @@
     color: white;  /* Texto blanco al hacer hover */
 }
 
-/* Estilo para el texto en la parte inferior izquierda */
-.footer-text {
+.footer {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 14px;
-    padding: 10px;
-    border-radius: 5px;
-    }
+    bottom: 0;
+    width: 100%;
+    /* Opcional: estilos */
+    background-color: white;
+}
 
 /* Barra lateral */  
-    .admi {
-        display: flex;
-        height: 90vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }  
-    .sidebar {
-        height: fit-content;
-        background-color: #fff;
-        border-right: 2px #9e9fa1; 
-        box-shadow: 0 0 10px 4px #ccd8ee;
-        display: flex;
-        flex-direction: column;
-        align-items: center;  
-    }
+.admi {
+    display: flex;
+    height: 90vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
-    .sidebar button {
-        width: 190px;
-        height: 70px;
-        background-color: white;
-        color: black;
-        border: 1px solid #4472C4;
-        margin-bottom: 10px;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-    }
+.sidebar {
+    height: fit-content;
+    background-color: #fff;
+    border-right: 2px #9e9fa1; 
+    box-shadow: 0 0 10px 4px #ccd8ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
 
-    .sidebar button:hover {
-        background-color: #4472C4;
-        color: white;
-    }
+.sidebar button {
+    width: 190px;
+    height: 70px;
+    background-color: white;
+    color: black;
+    border: 1px solid #4472C4;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.sidebar button:hover {
+    background-color: #4472C4;
+    color: white;
+}
