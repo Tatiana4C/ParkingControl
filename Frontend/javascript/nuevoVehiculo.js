@@ -22,46 +22,39 @@ $(document).ready(function() {
             ];
         }
 
-        // Añadir opciones al select
+        // Añadir opciones al select de marcas
         $marcaVehiculoSelect.append('<option value="">Seleccione</option>');
         options.forEach(function(marcaVehiculo) {
             $marcaVehiculoSelect.append('<option value="' + marcaVehiculo.toLowerCase().replace(/\s+/g, '-') + '">' + marcaVehiculo + '</option>');
         });
     }
 
-    // Función para actualizar opciones de espacio
-    function updatePuestoOptions(tipoVehiculo) {
-        $.ajax({
-            url: '/api/puestos/disponiblesPorTipoVehiculo', // Cambia esta URL a la ruta de tu controlador en el backend
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ tipoVehiculo: tipoVehiculo }), // Usa 'tipoVehiculo' en lugar de 'type'
-            success: function(response) {
-                var $puestoSelect = $('#numeroPuesto'); // Cambia 'puesto' por 'numeroPuesto'
-                $puestoSelect.empty(); // Limpiar opciones actuales
-                var options = [];
+    // Función para actualizar opciones de espacio según el tipo de vehículo
+    function updateSpaceOptions(tipoVehiculo) {
+        var $spaceSelect = $('#puesto');
+        $spaceSelect.empty(); // Limpiar opciones actuales
+        var options = [];
 
-                if (response.puestos && response.puestos.length > 0) {
-                    response.puestos.forEach(function(puesto) {
-                        options.push('<option value="' + puesto.id + '">' + puesto.numeroPuesto + '</option>');
-                    });
-                } else {
-                    options.push('<option value="">No hay espacios disponibles</option>');
-                }
-                
-                $puestoSelect.append(options.join(''));
-            },
-            error: function(xhr, status, error) {
-                $('#numeroPuesto').empty().append('<option value="">Error al cargar espacios</option>');
+        if (tipoVehiculo === 'carro') {
+            for (var i = 1; i <= 14; i++) {
+                options.push('<option value="' + i + '">' + i + '</option>');
             }
-        });
+        } else if (tipoVehiculo === 'moto') {
+            for (var i = 1; i <= 30; i++) {
+                options.push('<option value="' + i + '">' + i + '</option>');
+            }
+        }
+
+        // Añadir opciones al select de puestos
+        $spaceSelect.append('<option value="">Seleccione</option>');
+        $spaceSelect.append(options.join(''));
     }
 
     // Manejo del cambio en el tipo de vehículo
     $('#tipoVehiculo').on('change', function() {
         var selectedType = $(this).val();
         updateMarcaVehiculoOptions(selectedType);
-        updatePuestoOptions(selectedType);
+        updateSpaceOptions(selectedType);  // Cambiado a la función correcta
     });
 
     // Manejo del envío del formulario
@@ -72,7 +65,7 @@ $(document).ready(function() {
         var tipoVehiculo = $('#tipoVehiculo').val();
         var marcaVehiculo = $('#marcaVehiculo').val();
         var color = $('#color').val();
-        var puesto = $('#numeroPuesto').val();
+        var puesto = $('#puesto').val();  // Asegúrate que este ID coincida con el input correcto
         var fechaIngreso = $('#fechaIngreso').text();
 
         if (!placa || tipoVehiculo === 'Seleccione' || !puesto || !marcaVehiculo || !color) {
@@ -82,7 +75,7 @@ $(document).ready(function() {
 
         // Envía una solicitud AJAX para registrar el vehículo
         $.ajax({
-            url: '/api/vehiculos/con-puesto', // Cambia esta URL a la ruta de tu controlador en el backend
+            url: '/api/vehiculos', // Cambia esta URL a la ruta de tu controlador en el backend
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -100,7 +93,7 @@ $(document).ready(function() {
                 $('#tipoVehiculo').val('Seleccione');
                 $('#marcaVehiculo').val('');
                 $('#color').val('');
-                $('#numeroPuesto').val('');
+                $('#puesto').val('');  // Asegúrate de limpiar el campo correcto
                 $('#fechaIngreso').text(new Date().toLocaleTimeString()); // Actualizar la hora de ingreso
             },
             error: function(xhr, status, error) {
