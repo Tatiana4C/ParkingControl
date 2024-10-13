@@ -1,6 +1,5 @@
 /* Estilo para el el contenedor */
 .container-main {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +15,6 @@
 }
 
 .input-container {
-
     width: 80%; /* Ajusta el ancho del cuadro de texto */
     max-width: 600px; /* Ancho máximo del cuadro de texto */
     margin-bottom: 18px; /* Espacio debajo del cuadro de texto */
@@ -35,4 +33,11 @@
     font-size: 4em; /* Tamaño de fuente grande */
     align-content: center;
     text-align: center;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em; /* Reduce el tamaño del título en pantallas pequeñas */
+    }
 }

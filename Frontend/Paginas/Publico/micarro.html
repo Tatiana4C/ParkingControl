@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi vehiculo</title>
     <!-- jQuery -->
-    <script src="../../libs/jquery-3.7.1.js"></script> 
+    <script src="../../libs/jquery-3.7.1.js"></script>
     <!-- Bootstrap CSS -->
     <link href="../../libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
-    <!-- Bootstrap JS -->
-    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+
     <link rel="stylesheet" href="../../Estilo/Todos/base.css">
     <link rel="stylesheet" href="../../Estilo/Publico/micarro.css">
 </head>
 
 <body>
-<!-- Encabezado -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
-            <span><strong>ParkingControl</strong></span>
-        </a>
-        <div class="ml-auto">
-            <button class="btn btn-custom" onclick= "location.href='../Administrador/login.html'">Administrador</button>
+    <!-- Encabezado -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40"
+                    class="d-inline-block align-top">
+                <span><strong>ParkingControl</strong></span>
+            </a>
+            <div class="ml-auto">
+                <button class="btn btn-custom"
+                    onclick="location.href='../Administrador/login.html'">Administrador</button>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+    <hr style="border: 1px solid #4472C4; margin: 0;">
 
-<!-- Barra de navegación -->
-<div id="barranavegacion-placeholder"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-secondary">
-    <div class="container-fluid">
-        <div class="btn-toolbar" role="toolbar">
-            <button class="btn btn-custom" onclick= "location.href='aboutus.html'" >Sobre nosotros</button>
-            <button class="btn btn-custom" onclick= "location.href='where.html'">¿Dónde estamos ubicados?</button>
-            <button class="btn btn-custom" onclick= "location.href='tarifas.html'">Planes y tarifas</button>
+    <!-- Barra de navegación -->
+    <div id="barranavegacion-placeholder"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-secondary">
+        <div class="container-fluid">
+            <!-- Botón para colapsar la barra de herramientas en pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenedor que se colapsa -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Usar flex-column en pantallas pequeñas y flex-row en pantallas grandes -->
+                <div class="d-lg-flex flex-column flex-lg-row w-100">
+                    <button class="btn btn-custom w-100" onclick="location.href='aboutus.html'">Sobre nosotros</button>
+                    <button class="btn btn-custom w-100" onclick="location.href='where.html'">¿Dónde estamos
+                        ubicados?</button>
+                    <button class="btn btn-custom w-100" onclick="location.href='tarifas.html'">Planes y
+                        tarifas</button>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-
-     <!-- Mi carro -->
-
-     <div class="video-info-container">
-        <!-- Contenedor de video -->
-        <div class="video-container">
-            <video controls>
-                <source src="ruta_del_video.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
+    <!-- Mi carro -->
+    <div class="container video-info-container">
+        <div class="image-container">
+            <img id="camara-img" src="" alt="Imagen de la cámara">
         </div>
-
-        <!-- Contenedor de información -->
         <div class="info-container">
-            <div><strong>Placa: </strong>IDE-123</div>
-            <div><strong>Hora de ingreso: </strong>00:00:00</div>
-            <div><strong>Total estacionado: </strong>00:00:00</div>
+            <div><strong>Placa: </strong><span id="placaVehiculo"></span></div>
+            <div><strong>Puesto: </strong><span id="numeroPuesto"></span></div>
+            <div><strong>Hora de ingreso: </strong><br><span id="fechaIngreso"></span></div>
+            <div><strong>Total estacionado: </strong><span id="tiempoEstacionado"></span></div>
         </div>
     </div>
 
-    <div class="footer">
-        Horario de atención: Lun a dom de 05:00 a.m a 10:00 p.m <p></p>
-        Ubicación: Carrera 21 número 05 - 12 Riofrío, Valle del Cauca. </div>
-        
-   <!-- Bootstrap Bundle with Popper -->
-   <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <div class="footer-text"> Horario de atención: Lun a dom de 05:00 a.m a 10:00 p.m.
+        Ubicación: Carrera 21 número 05 - 12 Riofrío, Valle del Cauca.</div>
+
+
+    <!-- JS -->
+    <script src="../../javascript/micarro.js"> </script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
- /* Clase personalizada para la barra de navegación */
- .navbar-custom {
+/* Clase personalizada para la barra de navegación */
+.navbar-custom {
     padding: 5px 10px; /* Ajuste de padding para reducir el espacio */
     margin: 0; /* Elimina el margen alrededor del logo */
     font-size: 2em !important; /* Aumenta el tamaño de la fuente del encabezado */
@@ -16,10 +16,18 @@
 .btn-custom {
     background-color: white;  /* Fondo blanco */
     color: black;  /* Texto negro */
-    border: 2px solid #4472C4;  /* Borde azul de 2px */
-    margin: 0; /* Elimina el margen alrededor del botón */
+    border: 2px solid #4472C4; /* Borde azul */
+    border-radius: 0; /* Sin bordes redondeados */
+    padding: 10px; /* Ajuste de padding */
+    margin: 5px 0; /* Espacio entre botones */
+    text-align: center; /* Alineación del texto */
 }
-
+@media (min-width: 992px) {
+    .btn-custom {
+        flex: 1; /* Hace que los botones ocupen espacio de manera uniforme */
+        margin: 0; /* Elimina el margen entre botones en pantallas grandes */
+    }
+}
 
 /* Clase personalizada para los botones de la barra de herramientas */
 .btn-toolbar {
@@ -55,13 +63,20 @@
     color: white;  /* Texto blanco al hacer hover */
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Opcional: estilos */
-    background-color: white;
+/* Estilo para el texto en la parte inferior izquierda */
+.footer-text {
+    position: fixed; /* Cambia a fixed */
+    bottom: 10px; /* Distancia desde la parte inferior de la pantalla */
+    background-color: rgb(232, 232, 255);
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 0; /* Elimina el margen inferior */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
+
+
 
 /* Barra lateral */  
 .admi {
@@ -69,8 +84,7 @@
     height: 90vh;
     margin: 0;
     font-family: Arial, sans-serif;
-}
-
+}  
 .sidebar {
     height: fit-content;
     background-color: #fff;
@@ -98,4 +112,8 @@
 .sidebar button:hover {
     background-color: #4472C4;
     color: white;
+}
+/* Botón de colapso solo visible en pantallas pequeñas */
+.btn-primary.d-lg-none {
+    z-index: 999; /* Se asegura de que esté siempre visible */
 }

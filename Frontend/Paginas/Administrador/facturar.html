@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturar</title>
+    <!-- jQuery -->
+    <script src="../../libs/jquery-3.7.1.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="../../libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../Estilo/Todos/base.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Publico/index.html">
+                <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40"
+                    class="d-inline-block align-top">
+                <span><strong>ParkingControl</strong></span>
+            </a>
+        </div>
+    </nav>
+
+    <hr style="border: 1px solid #4472C4; margin: 0;">
+
+    <div class="admi">
+        <div id="barralateral-placeholder"></div>
+        <div class="container mt-4">
+            <h2>Facturar</h2>
+            <div class="info-facturacion">
+                <h3>Información sobre Facturación</h3>
+                <ul>
+                    <li><strong>Planes de Pago Anual y Mensual:</strong> Si su vehículo tiene un plan de pago anual o
+                        mensual, se generará una factura por valor de $0 y el vehículo se dará salida de inmediato.</li>
+                    <li><strong>Adquisición de un Nuevo Plan:</strong> Si desea adquirir un plan mensual o anual, se
+                        generará una factura por el costo del plan, pero no se dará salida al vehículo.</li>
+                    <li><strong>Facturación por Duración:</strong> En caso de que se facture por duración, se generará
+                        una factura basada en el tiempo que el vehículo ha estado estacionado, y se procederá a dar
+                        salida al vehículo.</li>
+                </ul>
+            </div>
+            <!-- Contenedor para centrar los botones -->
+
+            <div id="inputPlaca" class="text-center">
+                <label for="placa"><strong>Ingrese la placa del vehiculo</strong></label>
+                <br>
+                <input type="text" id="placa" class="form-control w-25 mx-auto text-center" required
+                    style="text-transform: uppercase;">
+                <!-- Agrupar los botones en un contenedor flex para centrarlos -->
+                <div class="d-flex justify-content-center mt-3">
+                    <button id="buscarVehiculo" class="btn btn-primary me-2">Buscar Vehículo</button>
+                    <button id="limpiarPagina" class="btn btn-secondary">Limpiar</button>
+                </div>
+            </div>
+            <div id="resultado" class="mt-4 text-center"></div>
+        </div>
+    </div>
+
+    <script src="../../javascript/facturar.js"></script>
+    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            $("#barralateral-placeholder").load("barralateral.html");
+        });
+    </script>
+</body>
+
+</html>

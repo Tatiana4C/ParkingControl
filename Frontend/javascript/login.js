@@ -1,22 +1,23 @@
-$(document).ready(function() {
+$(document).ready(function() { 
     $('#loginForm').on('submit', function(e) {
-        e.preventDefault();
-        var email = $('#email').val();
-        var contrasena = $('#contrasena').val();
+        e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
-        // Aquí puedes agregar lógica para autenticar al usuario
+        var email = $('#email').val();
+        var contrasena = $('#contrasena').val(); 
+
+        // Aquí envías los datos al backend
         $.ajax({
-            url: '/api/administradores', // Cambia esta URL al endpoint correcto de tu backend
+            url: 'http://localhost:8081/api/administradores/login',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
                 email: email,
-                contrasena: contrasena
+                contrasena: contrasena 
             }),
             success: function(response) {
-                // Manejo del éxito, por ejemplo, redirigir a otra página
+                // Manejo del éxito, como redirigir a otra página
                 alert('Inicio de sesión exitoso');
-                window.location.href = '/dashboard'; // Redirige a la página de administración o dashboard
+                window.location.href = 'bienvenido.html';
             },
             error: function(xhr, status, error) {
                 alert('Error al iniciar sesión');

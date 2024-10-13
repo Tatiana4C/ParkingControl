@@ -4,22 +4,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40vh; /* Ajusta la altura del contenedor principal */
     text-align: center;
-    margin-top: 80px; /* Espacio arriba del texto */
-    margin-bottom: 90px; /* Espacio debajo del texto */
+    margin-top: 20px; /* Espacio arriba del texto */
+    margin-bottom: 60px; /* Espacio debajo del texto */
 }
 
 .content-box {
     border: 2px solid #4472C4;
-    padding: 20px;
+    padding: 10px;
     margin: 20px 0;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
-   
+    padding-bottom: 10px; /* Ajusta según el tamaño de tu footer */
 }
 
 .content-box .text-content {
@@ -27,4 +26,24 @@
     margin-right: 25px;
     font-size: 1.1em;
     line-height: 1.6;
+    align-items: center;
+}
+/* Ajusta la altura y el tamaño del texto para pantallas más pequeñas */
+@media (max-width: 768px) {
+
+    .content-box {
+        display: flex;
+        flex-direction: column;
+        /* Espacio entre los elementos */
+        margin-bottom: 120px;
+        align-items: center;
+    }
+
+    /* Contenedor de la información */
+    .content-box {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+    }
+
 }

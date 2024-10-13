@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarifas y planes</title>
+    <title>Tarifas</title>
     <!-- jQuery -->
-    <script src="../../libs/jquery-3.7.1.js"></script> 
+    <script src="../../libs/jquery-3.7.1.js"></script>
     <!-- Bootstrap CSS -->
     <link href="../../libs/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet" />
-    <!-- Bootstrap JS -->
-    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.js"></script> 
+
     <link rel="stylesheet" href="../../Estilo/Todos/base.css">
     <link rel="stylesheet" href="../../Estilo/Estilo-admi/admitarifa.css">
     <link rel="stylesheet" href="../../Estilo/Todos/tarifas.css">
@@ -20,36 +20,54 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="../Publico/index.html">
-            <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
-            <span><strong>ParkingControl</strong></span></a>
+                <img src="../../Img/logo_parking.jpg" alt="Logo" width="40" height="40"
+                    class="d-inline-block align-top">
+                <span><strong>ParkingControl</strong></span></a>
         </div>
     </nav>
-     
+
     <hr style="border: 1px solid #4472C4; margin: 0;">
 
-     
     <div class="admi">
-    <!-- Barra de herramientas lateral -->
-    <div id="barralateral-placeholder"></div>
+        <!-- Barra de herramientas lateral -->
+        <div id="barralateral-placeholder"></div>
 
-    <!-- Área principal -->
-    <div class="main-content">
-        <div id="tablatarifas-placeholder"></div>   
-    </div>
-</div>
-</main>
-<!-- Bootstrap Bundle with Popper -->
-    <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function(){
-            $("#barralateral-placeholder").load("barralateral.html");
-        });
-    </script>
-    <script>
-        $(function(){
-            $("#tablatarifas-placeholder").load("../Ambos/tablatarifas.html");
-        });
-    </script>
+        <!-- Área principal -->
+        <div class="main-content">
+            <div id="tablatarifas-placeholder">
+                <div class="title">
+                    <strong>Planes y tarifas</strong>
+                </div>
+                <table id="tarifas-table">
+                    <thead>
+                        <tr>
+                            <th>Tiempo</th>
+                            <th>Automóvil</th>
+                            <th>Moto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+                </table>
+                <div class="nota">
+                    <h6>Si das doble click sobre la tarifa puedes modificarla</h6>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- JS -->
+        <script src="../../javascript/tarifaAdmi.js"> </script>
+
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="../../libs/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            $(function () {
+                $("#barralateral-placeholder").load("barralateral.html");
+            });
+        </script>
 </body>
+
 </html>

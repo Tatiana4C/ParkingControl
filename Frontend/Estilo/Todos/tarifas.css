@@ -1,3 +1,7 @@
+.tablatarifas-placeholder{
+    align-items: center; /* Alinea verticalmente el contenido del botón */
+
+}
 .title {
     font-size: 2em; /* Tamaño grande para el texto */
     margin-bottom: 10px; /* Espacio debajo del texto */
@@ -5,29 +9,19 @@
 }
 
 .input-container {
-    flex: 1;
     width: 80%; /* Ajusta el ancho del cuadro de texto */
+    vertical-align: center;
     max-width: 600px; /* Ancho máximo del cuadro de texto */
     margin-bottom: 18px; /* Espacio debajo del cuadro de texto */
     align-items: center; /* Alinea verticalmente el contenido del botón */
-    
-}
-
-.table-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 table {
     width: 80%;
     border-collapse: collapse;
-    vertical-align: center;
-    margin-top: 0px; /* Espacio arriba del texto */
-    margin-bottom: 15px; /* Espacio debajo del texto */
-    align-items: center;
+    margin: 0 auto; /* Asegura que la tabla esté centrada */
 }
+
 th, td {
     border: 2px solid #4472C4;
     padding: 8px;
@@ -35,4 +29,8 @@ th, td {
 }
 th {
     background-color: #f2f2f2;
+}
+.nota{
+    margin-top: 2%;
+    text-align: center;
 }

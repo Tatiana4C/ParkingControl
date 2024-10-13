@@ -51,7 +51,7 @@ p span {
 #ocupacion-maxima, #promedio-tiempo, #horarios-pico, #clientes-recurrentes,
 #ingresos-diarios, #ingresos-semanales, #ingresos-mensuales, #ingresos-anuales,
 #ocupacion-motos, #ocupacion-carros, #transacciones-efectivo, #transacciones-tarjeta,
-#tipos-motos, #tipos-carros {
+#tipos-motos, #tipos-carros, #totalPuestos, #puestosOcupados {
     font-size: 1.5em;
     color: #4472C4;
 }
@@ -100,7 +100,7 @@ p span {
     #ocupacion-maxima, #promedio-tiempo, #horarios-pico, #clientes-recurrentes,
     #ingresos-diarios, #ingresos-semanales, #ingresos-mensuales, #ingresos-anuales,
     #ocupacion-motos, #ocupacion-carros, #transacciones-efectivo, #transacciones-tarjeta,
-    #tipos-motos, #tipos-carros {
+    #tipos-motos, #tipos-carros, #totalPuestos, #puestosOcupados {
         font-size: 1.2em;
     }
 

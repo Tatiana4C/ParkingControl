@@ -1,9 +1,16 @@
-<div class="sidebar">
-    <button onclick= "location.href='nuevovehiculo.html'">Ingresar nuevo vehículo</button>
-    <button onclick= "location.href='admi-tarifa.html'">Tarifas</button>
-    <button onclick= "location.href='pagar.html'">Pago</button>
-    <button onclick= "location.href='parqueadero.html'">Ver parqueadero</button>
-    <button onclick= "location.href='estadisticas.html'">Estadisticas</button>
-    <button onclick= "location.href='nuevousuario.html'">Crear nuevo usuario</button>
-    <button onclick= "location.href='../Publico/index.html'">Cerrar sesión</button>
+<!-- Botón de colapso para pantallas pequeñas -->
+<button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarNav" aria-controls="sidebarNav" aria-expanded="false" aria-label="Toggle sidebar">
+    Menú
+</button>
+
+<!-- Barra lateral -->
+<div class="collapse d-lg-block sidebar" id="sidebarNav"> 
+    <button onclick="location.href='nuevovehiculo.html'">Ingresar nuevo vehículo</button>
+    <button onclick="location.href='admi-tarifa.html'">Tarifas</button>
+    <button onclick="location.href='facturar.html'">Crear factura</button>
+    <button onclick="location.href='parqueadero.html'">Ver parqueadero</button>
+    <button onclick="location.href='estadisticas.html'">Estadísticas</button>
+    <button onclick="location.href='usuario.html'">Administrar usuario</button>
+    <button onclick="location.href='facturas.html'">Facturas</button>
+    <button onclick="location.href='../Publico/index.html'">Cerrar sesión</button>
 </div>

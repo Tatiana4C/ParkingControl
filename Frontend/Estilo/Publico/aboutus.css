@@ -1,17 +1,5 @@
-.btn-toolbar .btn-custom {
-    background-color: white;  /* Fondo blanco */
-    color: black;  /* Texto negro */
-    border: 2px solid #4472C4; /* Borde botones */
-    border-radius: 0; /* Sin borde redondeado */
-    padding: 0; /* Sin padding para mantener la forma cuadrada */
-    flex: 1; /* Hace que los botones crezcan para ocupar el espacio disponible */
-    height: 60px; /* Alto fijo para hacer el botón cuadrado */
-    margin: 0; /* Elimina el margen alrededor del botón */
-    display: flex; /* Utiliza flexbox para centrar el texto */
-    align-items: center; /* Alinea verticalmente el contenido del botón */
-    justify-content: center; /* Alinea horizontalmente el contenido del botón */
-    text-align: center; /* Alinea el texto al centro */
-    
+.container-main{
+    padding-bottom: 60px; /* Ajusta según el tamaño de tu footer */
 }
 
 .title {
@@ -22,7 +10,6 @@
 }
 
 .content-box {
-    flex: 1;
     border: 2px solid #4472C4;
     padding: 20px;
     margin: 20px 0;
@@ -43,4 +30,31 @@
     margin-right: 20px;
     font-size: 1.1em;
     line-height: 1.6;
+}
+
+/* Ajusta la altura y el tamaño del texto para pantallas más pequeñas */
+@media (max-width: 768px) {
+    
+    .title {
+        font-size: 2em; /* Tamaño más pequeño para móviles */
+        margin-top: 10px; /* Espacio ajustado */
+        margin-bottom: 15px; /* Espacio ajustado */
+    }
+
+    .content-box {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: flex-start; /* Alinea elementos a la izquierda */
+    }
+
+    .content-box img {
+        max-width: 100%; /* Imagen más responsiva */
+        height: auto; /* Mantiene la proporción */
+        margin-bottom: 15px; /* Espacio inferior en imágenes */
+    }
+
+    .content-box .text-content {
+        margin-right: 0; /* Elimina el margen a la derecha */
+        font-size: 1em; /* Tamaño de texto ajustado */
+    }
+
 }

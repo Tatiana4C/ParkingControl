@@ -1,0 +1,49 @@
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(214, 213, 255, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+/* Estilo para el encabezado de la tabla */
+table thead th {
+    background-color: #4472C4; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Estilo para las filas de la tabla */
+table tbody tr {
+    text-align: center;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+/* Estilo para el botón "Eliminar" */
+button.btn-danger {
+    background-color: #ca1414; /* Color rojo por defecto */
+    border-color: #ff4d4d; /* Borde rojo */
+    color: white;
+}
+
+button.btn-danger:hover {
+    background-color: #ff3333; /* Color más oscuro al hacer hover */
+    border-color: #ff3333;
+}
