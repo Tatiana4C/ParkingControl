@@ -48,8 +48,8 @@ public interface FacturaInt {
 
     // Método para obtener el total por el tipo de pago
     long obtenerTotalTransacciones();
-    BigDecimal obtenerIngresosPorFormaPago(String formaPago);
-    long obtenerTotalTransaccionesPorFormaPago(String formaPago);
+    BigDecimal obtenerIngresosPorFormaPago(FormaPago formaPago);
+    long obtenerTotalTransaccionesPorFormaPago(FormaPago formaPago);
 
     // Método para vehiculos recurrentes
     double obtenerPorcentajeClientesRecurrentes();

@@ -44,10 +44,10 @@ public interface FacturaRepository extends JpaRepository<Factura, Integer> {
     long countTotalTransacciones();
     
     @Query("SELECT SUM(f.valor) FROM Factura f WHERE f.formaPago = :formaPago")
-    BigDecimal sumTotalByFormaPago(String formaPago);
+    BigDecimal sumTotalByFormaPago(FormaPago formaPago);
     
     @Query("SELECT COUNT(f) FROM Factura f WHERE f.formaPago = :formaPago")
-    long countByFormaPago(String formaPago);
+    long countByFormaPago(FormaPago formaPago);
 
     // Método calcular clientes recurrentes
     // Map me permite que me devulva mas de un dato

@@ -25,6 +25,7 @@ import com.parkingcontrol.miproyecto.Servicios.Interfaces.FacturaInt;
 import com.parkingcontrol.miproyecto.Servicios.Interfaces.PlanPagoInt;
 import com.parkingcontrol.miproyecto.Servicios.Interfaces.TarifaInt;
 
+
 @Service
 public class FacturaImp implements FacturaInt {
 
@@ -110,10 +111,24 @@ public class FacturaImp implements FacturaInt {
             deleteByPlaca(vehiculo.getPlaca()); // Eliminamos el vehiculo
             return factura; // Fin de la operación
         }
-        
-        // Si no hay plan activo, devuelve información al frontend
-        return factura; // Devolver factura con información sobre que no hay plan
+        else {
+            // Si el plan está vencido, elimínalo
+            delatePlanPagoByPlaca(placa);
+        }
+        return factura;
     }
+
+    // Método para eliminar vehiculo con planPago vencido de la base de datos
+    public void delatePlanPagoByPlaca(String placa) {
+        // Buscar el plan por la placa
+        Optional<PlanPago> planPago = planPagoRepository.findByPlaca(placa);
+        if (planPago.isPresent()) {
+            planPagoRepository.delete(planPago.get());
+        } else {
+            throw new NoSuchElementException("No se encontró un plan de pago para la placa: " + placa);
+        }
+    }
+
 
     // Método para facturar Planes mensuales y anuales
     @Override
@@ -218,7 +233,6 @@ public class FacturaImp implements FacturaInt {
 
     }
 
-
     // Método para cambiar la forma de pago
     @Override
     public Factura cambiarFormaPago(Integer id, FormaPago nuevaFormaPago) {
@@ -291,12 +305,12 @@ public class FacturaImp implements FacturaInt {
     }
 
     @Override
-    public BigDecimal obtenerIngresosPorFormaPago(String formaPago) {
+    public BigDecimal obtenerIngresosPorFormaPago(FormaPago formaPago) {
         return facturaRepository.sumTotalByFormaPago(formaPago);
     }
 
     @Override
-    public long obtenerTotalTransaccionesPorFormaPago(String formaPago) {
+    public long obtenerTotalTransaccionesPorFormaPago(FormaPago formaPago) {
         // Consulta el total de transacciones por tipo de pago
         return facturaRepository.countByFormaPago(formaPago);
     }

@@ -61,8 +61,8 @@ $(document).ready(function () {
             $('#transacciones-tarjeta span:first').text(`${data.porcentajeTarjeta.toFixed(2)}%`);
 
             // Mostrar los montos totales de las transacciones
-            $('#transacciones-efectivo .monto').text(`Monto total: $${data.montoEfectivo.toFixed(2)}`);
-            $('#transacciones-tarjeta .monto').text(`Monto total: $${data.montoTarjeta.toFixed(2)}`);
+            $('#transacciones-efectivo .monto').text(`Monto total: $${data.ingresosEfectivo.toFixed(0)}`);
+            $('#transacciones-tarjeta .monto').text(`Monto total: $${data.ingresosTarjeta.toFixed(0)}`);
         },
         error: function(err) {
             console.error("Error al obtener transacciones por tipo de pago:", err);

@@ -44,14 +44,40 @@ $(document).ready(function() {
                     $.ajax({
                         url: `http://localhost:8081/api/facturas/tienePlan`,
                         method: 'POST',
-                        contentType: 'application/json', // Especifica el tipo de contenido
-                        data: vehiculo.placa, // Aquí debe ser el objeto serializado
+                        contentType: 'text/plain', //Envia Texto
+                        data: vehiculo.placa, // Evía placa
                         success: function(response) {
                             console.log(response);
                             if (response.existe) {
                                 manejarPlanPago(response);
-                            } else {
                                 alert('Factura creada');
+                            } else {
+                                alert('Su plan está vencido');
+                                // Si el plan está vencido, muestra opciones reutilizando las funciones existentes
+                                $('#resultado').html(`
+                                    <h4>Su plan está vencido</h4>
+                                    <p>¿Qué desea hacer?</p>
+                                    <p>¿Desea adquirir un plan mensual o anual?</p>
+                                    <div class="d-flex justify-content-center">
+                                    <button id="planMensual" class="btn btn-success mx-2">Mensual</button>
+                                    <button id="planAnual" class="btn btn-success mx-2">Anual</button>
+                                    </div>
+                                    <p><br> O ¿prefieres facturar por tiempo?</p>
+                                    <button id="facturaTiempo" class="btn btn-warning mx-2">Factura por Tiempo</button>
+                                    `);
+                                    
+                                    // Reutilizar las funciones existentes
+                                    $('#planMensual').click(function() {
+                                        crearPlanPago('MENSUAL', vehiculo);
+                                    });
+
+                                    $('#planAnual').click(function() {
+                                        crearPlanPago('ANUAL', vehiculo);
+                                    });
+                                    
+                                    $('#facturaTiempo').click(function() {
+                                        generarFacturaPorTiempo(vehiculo);
+                                    });         
                             }
                         },
                         error: function(xhr, status, error) {
@@ -155,8 +181,8 @@ $(document).ready(function() {
             }
         });
     }
-    
 
+    // Factura por duración
     function generarFacturaPorTiempo(vehiculo) {
         const placa = vehiculo.placa;  // Solo extrae la placa del objeto vehiculo
         console.log("Placa enviada:", placa); // Asegúrate de que la placa tenga un valor válido
@@ -178,8 +204,8 @@ $(document).ready(function() {
                     <h4>Factura por Tiempo</h4>
                     <p>Valor: ${valor}</p>
                     <p>Seleccione el medio de pago:</p>
-                    <button class="btn btn-info" id="EFECTIVO">Efectivo</button>
-                    <button class="btn btn-info" id="TARJETA">Tarjeta</button>
+                    <button class="btn btn-info" id="pagarEfectivo">Efectivo</button>
+                    <button class="btn btn-info" id="pagarTarjeta">Tarjeta</button>
                 `);
 
                 $('#pagarEfectivo').click(function() {
@@ -213,14 +239,16 @@ $(document).ready(function() {
             }
         });
     }
-
+    // Función para limpiar la pagina
+    function limpiarPagina() {
+        // Aquí va el código para limpiar los elementos de la página
+        $('#placa').val('');  // Limpiar el campo de placa
+        $('#resultado').html('');  // Limpiar el área de resultados
+        // Si hay otros campos o elementos que deseas limpiar, agrégales aquí
+    }    
+    // Botón al evento click para limpiar la página
     $('#limpiarPagina').click(function() {
-        if (confirm('¿Estás seguro de que deseas limpiar la página?')) {
-            limpiarPagina();
-        }
+        limpiarPagina();
     });
-    // Asociar el botón al evento click para limpiar la página
-    $('#limpiarPagina').click(function() {
-    limpiarPagina();});
       
 }); // Fin del $(document).ready

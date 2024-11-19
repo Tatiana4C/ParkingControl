@@ -16,6 +16,6 @@ public interface PlanPagoInt {
     List<PlanPago> findAll();
 
     // Eliminar planes expirados
-    void eliminarPlanesExpirados(); 
+    void deletePlanPagoByPlaca(String placa);
     
 }

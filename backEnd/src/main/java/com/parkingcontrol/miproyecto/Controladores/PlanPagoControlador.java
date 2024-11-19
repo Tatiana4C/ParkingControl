@@ -23,7 +23,7 @@ import com.parkingcontrol.miproyecto.Servicios.Interfaces.PlanPagoInt;
 public class PlanPagoControlador {
 
     private PlanPagoInt planPagoInt;
-    
+
     public PlanPagoControlador(PlanPagoInt planPagoInt) {
         this.planPagoInt = planPagoInt;
     }
@@ -52,10 +52,10 @@ public class PlanPagoControlador {
         return planPagoInt.findAll();
     }
 
-    // Eliminar planes expirados
-    @DeleteMapping("/eliminarExpirados")
-    public ResponseEntity<Void> eliminarPlanesExpirados() {
-        planPagoInt.eliminarPlanesExpirados();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    // Endpoint para eliminar un plan de pago por placa
+    @DeleteMapping("eliminarPlanPago/{placa}")
+    public ResponseEntity<String> delatePlaca(@PathVariable String placa) {
+        planPagoInt.deletePlanPagoByPlaca(placa);
+        return ResponseEntity.noContent().build();
     }
 }

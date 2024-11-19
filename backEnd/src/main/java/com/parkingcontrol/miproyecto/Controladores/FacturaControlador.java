@@ -56,16 +56,18 @@ public class FacturaControlador {
         return ResponseEntity.ok(factura);
     }
 
+    // Método para crear factura por 0 de un vehiculo que tiene un planPago
     @PostMapping("/tienePlan")
     public ResponseEntity<String> crearFactura(@RequestBody String placa) {
         try {
-            facturaInt.crearFactura(placa);  // Corregido
+            facturaInt.crearFactura(placa);
             return ResponseEntity.status(HttpStatus.CREATED).body("Factura creada con éxito.");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
 
+    // Método para crear factura de mensualidad o anualidad
     @PostMapping("/crearFacturaPlanPago")
     public ResponseEntity<Map<String, Object>> crearFacturaPlanPago(@RequestParam("placa") String placa,
                                                                @RequestParam("tipoPlan") TipoPlan tipoPlan) {
@@ -164,18 +166,25 @@ public class FacturaControlador {
     @GetMapping("/ingresos-tipo-pago")
     public Map<String, Object> obtenerIngresosPorFormaPago() {
         Map<String, Object> respuesta = new HashMap<>();
+    
+        // Convertir las cadenas a FormaPago enum
+        FormaPago formaPagoEfectivo = FormaPago.valueOf("EFECTIVO");
+        FormaPago formaPagoTarjeta = FormaPago.valueOf("TARJETA");
         
-        BigDecimal ingresosEfectivo = facturaInt.obtenerIngresosPorFormaPago("EFECTIVO");
-        BigDecimal ingresosTarjeta = facturaInt.obtenerIngresosPorFormaPago("TARJETA");
+        // Llamar a los métodos con el enum
+        BigDecimal ingresosEfectivo = facturaInt.obtenerIngresosPorFormaPago(formaPagoEfectivo);
+        BigDecimal ingresosTarjeta = facturaInt.obtenerIngresosPorFormaPago(formaPagoTarjeta);
 
         long totalTransacciones = facturaInt.obtenerTotalTransacciones();
-        long transaccionesEfectivo = facturaInt.obtenerTotalTransaccionesPorFormaPago("EFECTIVO");
-        long transaccionesTarjeta = facturaInt.obtenerTotalTransaccionesPorFormaPago("TARJETA");
+        long transaccionesEfectivo = facturaInt.obtenerTotalTransaccionesPorFormaPago(formaPagoEfectivo);
+        long transaccionesTarjeta = facturaInt.obtenerTotalTransaccionesPorFormaPago(formaPagoTarjeta);
+
 
         // Calcular el porcentaje
         double porcentajeEfectivo = (double) transaccionesEfectivo / totalTransacciones * 100;
         double porcentajeTarjeta = (double) transaccionesTarjeta / totalTransacciones * 100;
 
+        // Agregar los resultados al mapa de respuesta
         respuesta.put("ingresosEfectivo", ingresosEfectivo);
         respuesta.put("ingresosTarjeta", ingresosTarjeta);
         respuesta.put("porcentajeEfectivo", porcentajeEfectivo);

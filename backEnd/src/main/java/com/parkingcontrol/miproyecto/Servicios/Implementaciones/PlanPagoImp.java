@@ -1,7 +1,7 @@
 package com.parkingcontrol.miproyecto.Servicios.Implementaciones;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -35,11 +35,15 @@ public class PlanPagoImp implements PlanPagoInt{
     }
 
     @Override
-    // Método para eliminar planes de vehículos cuyo plan ha expirado
-    public void eliminarPlanesExpirados() {
-        LocalDateTime ahora = LocalDateTime.now();
-        List<PlanPago> planesExpirados = planPagoRepository.findByFechaFinBefore(ahora);
-        planPagoRepository.deleteAll(planesExpirados);
+    public void deletePlanPagoByPlaca(String placa) {
+        Optional<PlanPago> planPago = planPagoRepository.findByPlaca(placa);
+        if (planPago.isPresent()) {
+            // Elimina el plan de pago si existe
+            planPagoRepository.delete(planPago.get());
+        } else {
+            throw new NoSuchElementException("No se encontró un plan de pago para la placa: " + placa);
+        }
     }
+
 }
 
