@@ -25,6 +25,7 @@ $(document).ready(function() {
         });
     });
 
+    // Verifica si el vehiculo tiene un planPango
     function manejarPlanPago(vehiculo) {
         $.ajax({
             url: `http://localhost:8081/api/planesPagos/${vehiculo.placa}`,
@@ -37,104 +38,76 @@ $(document).ready(function() {
                         <h4>Detalles del Plan de Pago</h4>
                         <p>Tipo de Plan: ${response.tipoPlan}</p>
                         <p>Fecha de vencimiento: ${response.fechaFin}</p>
-                        <p></p>
                     `);
-                    // Crear factura
+    
+                    // Verifica si el planPago esta activo
                     $.ajax({
                         url: `http://localhost:8081/api/facturas/tienePlan`,
                         method: 'POST',
-                        contentType: 'text/plain', //Envia Texto
+                        contentType: 'text/plain', // Envia Texto
                         data: vehiculo.placa, // Envía placa
-                        success: function(response) {
-                            console.log(response);
-                            if (xhr.status === 201) {
-                                manejarPlanPago(response);
-                                alert('Factura con valor de 0 ha sido creada con exito');
-                            } else if (xhr.status === 404) {
-                                alert('Su plan está vencido');
-                                // Si el plan está vencido, muestra opciones reutilizando las funciones existentes
-                                $('#resultado').html(`
-                                    <h4>Su plan está vencido</h4>
-                                    <p>¿Qué desea hacer?</p>
-                                    <p>¿Desea adquirir un plan mensual o anual?</p>
-                                    <div class="d-flex justify-content-center">
-                                    <button id="planMensual" class="btn btn-success mx-2">Mensual</button>
-                                    <button id="planAnual" class="btn btn-success mx-2">Anual</button>
-                                    </div>
-                                    <p><br> O ¿prefieres facturar por tiempo?</p>
-                                    <button id="facturaTiempo" class="btn btn-warning mx-2">Factura por Tiempo</button>
-                                    `);
-                                    
-                                    // Reutilizar las funciones existentes
-                                    $('#planMensual').click(function() {
-                                        crearPlanPago('MENSUAL', vehiculo);
-                                    });
-
-                                    $('#planAnual').click(function() {
-                                        crearPlanPago('ANUAL', vehiculo);
-                                    });
-                                    
-                                    $('#facturaTiempo').click(function() {
-                                        generarFacturaPorTiempo(vehiculo);
-                                    });         
+                        success: function(response, textStatus, jqXHR) {
+                            console.log("Estado HTTP:", jqXHR.status);
+                            console.log("Respuesta del servidor:", response);
+   
+                            // Crea factura por el valor de 0 si el plan esta activo
+                            if (jqXHR.status === 201) {
+                                alert('Factura con valor de 0 ha sido creada con éxito');
                             }
                         },
+                        error: function(xhr) {
+                            console.log("Estado HTTP (Error):", xhr.status);
+                            console.log("Respuesta del servidor:", xhr.responseText);
+   
+                            // El plan esta vencido así que no genera factura
+                            // Elimina de la base de datos el plan vencido y ofrece formas de pago
+                            if (xhr.status === 400) {
+                                alert('Su plan está vencido');
+                                mostrarOpcionesDePlan(vehiculo);
+                            } else {
+                                alert('Error inesperado al crear la factura: ' + xhr.responseText);
+                            }
+                        }
                     });
                 } else {
-                    // Si no tiene un plan de pago, ofrecer uno
-                    $('#resultado').html(`
-                        <h4>No tiene un plan de pago.</h4>
-                        <p>¿Desea adquirir un plan mensual o anual?</p>
-                        <button id="planMensual" class="btn btn-success">Mensual</button>
-                        <button id="planAnual" class="btn btn-success">Anual</button>
-                        <button id="facturaTiempo" class="btn btn-success mt-2">Factura por Tiempo</button>
-                    `);
-                    
-                    $('#planMensual').click(function() {
-                        crearPlanPago('MENSUAL', vehiculo);
-                    });
-
-                    $('#planAnual').click(function() {
-                        crearPlanPago('ANUAL', vehiculo);
-                    });
-
-                    $('#facturaTiempo').click(function() {
-                        generarFacturaPorTiempo(vehiculo);
-                    });
+                    mostrarOpcionesDePlan(vehiculo);
                 }
             },
             error: function(xhr, status, error) {
                 if (xhr.status === 404) {
-                    $('#resultado').html(`
-                        <h4>No tiene un plan de pago.</h4>
-                        <p>¿Desea adquirir un plan mensual o anual?</p>
-                        <div class="d-flex justify-content-center">
-                        <button id="planMensual" class="btn btn-success mx-2">Mensual</button>
-                        <button id="planAnual" class="btn btn-success mx-2">Anual</button>
-                        </div>
-                        <p><br> O ¿prefieres facturar por tiempo?</p>
-                        <button id="facturaTiempo" class="btn btn-warning mx-2">Factura por Tiempo</button>
-                    `);                       
-
-                    // Agregar listeners a los botones
-                    $('#planMensual').click(function() {
-                        crearPlanPago('MENSUAL', vehiculo);
-                    });
-
-                    $('#planAnual').click(function() {
-                        crearPlanPago('ANUAL', vehiculo);
-                    });
-
-                    $('#facturaTiempo').click(function() {
-                        generarFacturaPorTiempo(vehiculo);
-                    });
+                    mostrarOpcionesDePlan(vehiculo);
                 } else {
                     alert('Error al verificar el plan de pago: ' + xhr.responseText);
                 }
             }
-        }); // Cierre de la función manejarPlanPago
+        });
     }
-
+    
+    function mostrarOpcionesDePlan(vehiculo) {
+        $('#resultado').html(`
+            <h4>No tiene un plan de pago.</h4>
+            <p>¿Desea adquirir un plan mensual o anual?</p>
+            <div class="d-flex justify-content-center">
+                <button id="planMensual" class="btn btn-success mx-2">Mensual</button>
+                <button id="planAnual" class="btn btn-success mx-2">Anual</button>
+            </div>
+            <p><br> O ¿prefieres facturar por tiempo?</p>
+            <button id="facturaTiempo" class="btn btn-warning mx-2">Factura por Tiempo</button>
+        `);
+    
+        $('#planMensual').click(function() {
+            crearPlanPago('MENSUAL', vehiculo);
+        });
+    
+        $('#planAnual').click(function() {
+            crearPlanPago('ANUAL', vehiculo);
+        });
+    
+        $('#facturaTiempo').click(function() {
+            generarFacturaPorTiempo(vehiculo);
+        });
+    }
+    
     // Función para crear factura de un plan mensual o anual
     function crearPlanPago(tipoPlan, vehiculo) {
         $.ajax({

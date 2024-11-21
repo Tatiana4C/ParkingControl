@@ -175,6 +175,7 @@ public class FacturaImp implements FacturaInt {
         return factura; // Devolvemos la factura creada
     }
 
+    // Facturar por duración del vehiculo en el parqueadero
     @Override
     public Factura calcularTarifaPorDuracion(Vehiculo vehiculo) {
         BigDecimal tarifaFraccion = tarifaInt.obtenerTarifaPorTipoPlan(vehiculo.getTipoVehiculo(), TipoPlan.FRACCION);
@@ -200,9 +201,8 @@ public class FacturaImp implements FacturaInt {
 
         if (horas < 12) {
 
-            long horasACobrar = horas + (duracion.toMinutesPart() > 15 ? 1 : 0);
+            long horasACobrar = horas + (duracion.toMinutesPart() > 5 ? 1 : 0);
             total = tarifaFraccion.multiply(BigDecimal.valueOf(horasACobrar));
-        
         } else {
 
             long dias = horas / 24;
