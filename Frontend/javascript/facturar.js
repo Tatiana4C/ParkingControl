@@ -37,21 +37,20 @@ $(document).ready(function() {
                         <h4>Detalles del Plan de Pago</h4>
                         <p>Tipo de Plan: ${response.tipoPlan}</p>
                         <p>Fecha de vencimiento: ${response.fechaFin}</p>
-                        <p>Factura Total: 0</p>
+                        <p></p>
                     `);
-
                     // Crear factura
                     $.ajax({
                         url: `http://localhost:8081/api/facturas/tienePlan`,
                         method: 'POST',
                         contentType: 'text/plain', //Envia Texto
-                        data: vehiculo.placa, // Evía placa
+                        data: vehiculo.placa, // Envía placa
                         success: function(response) {
                             console.log(response);
-                            if (response.existe) {
+                            if (xhr.status === 201) {
                                 manejarPlanPago(response);
-                                alert('Factura creada');
-                            } else {
+                                alert('Factura con valor de 0 ha sido creada con exito');
+                            } else if (xhr.status === 404) {
                                 alert('Su plan está vencido');
                                 // Si el plan está vencido, muestra opciones reutilizando las funciones existentes
                                 $('#resultado').html(`
@@ -80,9 +79,6 @@ $(document).ready(function() {
                                     });         
                             }
                         },
-                        error: function(xhr, status, error) {
-                            alert('No se pudo crear la factura');
-                        }
                     });
                 } else {
                     // Si no tiene un plan de pago, ofrecer uno

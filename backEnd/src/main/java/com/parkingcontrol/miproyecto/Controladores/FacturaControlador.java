@@ -60,12 +60,23 @@ public class FacturaControlador {
     @PostMapping("/tienePlan")
     public ResponseEntity<String> crearFactura(@RequestBody String placa) {
         try {
-            facturaInt.crearFactura(placa);
+            // Intentamos crear la factura llamando al servicio
+            Factura factura = facturaInt.crearFactura(placa);
+            
+            // Si la factura es null, significa que el plan de pago está vencido
+            if (factura == null) {
+                // Respondemos con un BAD_REQUEST si el plan está vencido
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El plan de pago está vencido.");
+            }
+            
+            // Si la factura no es null, significa que se creó correctamente
             return ResponseEntity.status(HttpStatus.CREATED).body("Factura creada con éxito.");
         } catch (RuntimeException e) {
+            // En caso de un error inesperado (por ejemplo, vehículo no encontrado), respondemos con CONFLICT
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
+    
 
     // Método para crear factura de mensualidad o anualidad
     @PostMapping("/crearFacturaPlanPago")

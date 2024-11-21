@@ -114,8 +114,8 @@ public class FacturaImp implements FacturaInt {
         else {
             // Si el plan está vencido, elimínalo
             delatePlanPagoByPlaca(placa);
+            return null;
         }
-        return factura;
     }
 
     // Método para eliminar vehiculo con planPago vencido de la base de datos

@@ -109,6 +109,7 @@ $(document).ready(function() {
                 $('#fechaIngreso').text(new Date(new Date() - offset).toISOString().slice(0, 19)); // Actualizar la fecha
             },
             error: function(xhr, status, error) {
+                alert('No se pudo ingresar el vehiculo');
                 $('#responseMessage').text('Error al registrar el vehículo.').addClass('text-danger');
             }
         });          
