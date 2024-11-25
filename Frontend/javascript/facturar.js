@@ -12,8 +12,28 @@ $(document).ready(function() {
             url: `http://localhost:8081/api/vehiculos/${placa}`,
             method: 'GET',
             success: function(response) {
-                // console.log(response);
-                if (response && response.placa) {
+                console.log("Esta el vehiculo" + response);
+                if (response && response.placa && response.fechaIngreso) {
+                    // Calcular tiempo total estacionado
+                    const fechaIngreso = new Date(response.fechaIngreso);
+                    const fechaActual = new Date();
+                    const tiempoTotalMs  = fechaActual - fechaIngreso;
+
+                    console.log("El tiempo total del vehículo en el parqueadero fue:", tiempoTotalMs);
+
+                    // Convertir milisegundos a horas, minutos y segundos
+                    const horas = Math.floor(tiempoTotalMs / (1000 * 60 * 60));
+                    const minutos = Math.floor((tiempoTotalMs % (1000 * 60 * 60)) / (1000 * 60));
+                    const segundos = Math.floor((tiempoTotalMs % (1000 * 60)) / 1000);
+
+                    const tiempoTotalLegible = `${horas}h ${minutos}m ${segundos}s`;
+                    
+                    console.log("La fecha de ingreso fue" + response.fechaIngreso);
+                    console.log("El tiempo total del vehiculo en el parqueadero fue:" + tiempoTotalLegible);
+                    $('#tiempoEstacionado').html(`
+                        <p>Tiempo en el parqueadero: ${tiempoTotalLegible}</p>
+                    `);
+
                     manejarPlanPago(response);
                 } else {
                     alert('El vehículo no se encuentra en el parqueadero. Placa: ' + placa);
