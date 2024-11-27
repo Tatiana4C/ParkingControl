@@ -203,30 +203,35 @@ public class FacturaImp implements FacturaInt {
             // Cobrar por fracción
             long horasACobrar = horas + (duracion.toMinutesPart() > 5 ? 1 : 0);
             total = tarifaFraccion.multiply(BigDecimal.valueOf(horasACobrar));
-
+        
         } else if (horas >= 12 && horas < 24) {
             // Cobrar tarifa diaria si está entre 12 y 24 horas
             total = tarifaDiaria;
-
+        
         } else {
             // Cobrar días completos más las horas restantes
             long dias = horas / 24;
             long horasRestantes = horas % 24;
-
-            // Calcular el costo de las horas restantes
-            // Si las horas restantes son 12 o más
-            if (horasRestantes >= 12 && horas < 24) {
-                // Cobrar tarifa diaria si está entre 12 y 24 horas
-                BigDecimal costoHorasRestantes = tarifaDiaria;
-                 // Sumar el costo de los días completos y las horas restantes
-                total = tarifaDiaria.multiply(BigDecimal.valueOf(dias)).add(costoHorasRestantes);
-            } else{
-            // Calcular el costo de las horas restantes como fracciones
-            BigDecimal costoHorasRestantes = tarifaFraccion.multiply(BigDecimal.valueOf(horasRestantes));
-            // Sumar el costo de los días completos y las horas restantes
-            total = tarifaDiaria.multiply(BigDecimal.valueOf(dias)).add(costoHorasRestantes);
+        
+            // Redondear las horas restantes si los minutos son mayores a 5
+            if (duracion.toMinutesPart() > 5) {
+                horasRestantes++;
             }
+        
+            BigDecimal costoHorasRestantes;
+        
+            // Si las horas restantes son 12 o más, se cobra como un día adicional
+            if (horasRestantes >= 12) {
+                costoHorasRestantes = tarifaDiaria;
+            } else {
+                // Cobrar las horas restantes como fracciones
+                costoHorasRestantes = tarifaFraccion.multiply(BigDecimal.valueOf(horasRestantes));
+            }
+        
+            // Calcular el total sumando días completos y horas/fracciones restantes
+            total = tarifaDiaria.multiply(BigDecimal.valueOf(dias)).add(costoHorasRestantes);
         }
+        
         
         System.out.println("Tarifa Fracción: " + tarifaFraccion);
         System.out.println("Tarifa Diaria: " + tarifaDiaria);
