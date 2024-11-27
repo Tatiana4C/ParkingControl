@@ -11,12 +11,12 @@ $.ajax({
         const tabla = $('#tarifas-table');
         const rows = `
             <tr>
-                <td>Fracción</td>
+                <td>Hora y fracción</td>
                 <td>$ ${carro.tarifaFraccion}</td>
                 <td>$ ${moto.tarifaFraccion}</td>
             </tr>
             <tr>
-                <td>Hora</td>
+                <td>Día</td>
                 <td>$ ${carro.tarifaDia}</td>
                 <td>$ ${moto.tarifaDia}</td>
             </tr>

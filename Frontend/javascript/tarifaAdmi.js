@@ -10,14 +10,14 @@ $.ajax({
         const tabla = $('#tarifas-table');
         const rows = `
             <tr>
-                <td>Fracción</td>
+                <td>Hora y fracción</td>
                 <td class="editable" data-tipo="fraccion" data-vehiculo="CARRO">$ ${carro.tarifaFraccion}</td>
                 <td class="editable" data-tipo="fraccion" data-vehiculo="MOTO">$ ${moto.tarifaFraccion}</td>
             </tr>
             <tr>
-                <td>Hora</td>
-                <td class="editable" data-tipo="hora" data-vehiculo="CARRO">$ ${carro.tarifaDia}</td>
-                <td class="editable" data-tipo="hora" data-vehiculo="MOTO">$ ${moto.tarifaDia}</td>
+                <td>Día</td>
+                <td class="editable" data-tipo="dia" data-vehiculo="CARRO">$ ${carro.tarifaDia}</td>
+                <td class="editable" data-tipo="dia" data-vehiculo="MOTO">$ ${moto.tarifaDia}</td>
             </tr>
             <tr>
                 <td>Mensual</td>
@@ -65,7 +65,7 @@ function actualizarTarifa(tipoVehiculo, tipo, nuevoValor) {
     // Construir el objeto para enviar al backend
     const tarifaActualizada = {};
     if (tipo === "fraccion") tarifaActualizada.tarifaFraccion = nuevoValor;
-    else if (tipo === "hora") tarifaActualizada.tarifaDia = nuevoValor;
+    else if (tipo === "dia") tarifaActualizada.tarifaDia = nuevoValor;
     else if (tipo === "mensual") tarifaActualizada.tarifaMes = nuevoValor;
     else if (tipo === "anual") tarifaActualizada.tarifaAnual = nuevoValor;
 

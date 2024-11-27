@@ -104,6 +104,7 @@ public class FacturaControlador {
         }
     }
 
+    // Método para facturar por duración
     @PostMapping("/calcularPorDuracion")
     public ResponseEntity<Map<String, Object>> calcularTarifaPorDuracion(@RequestParam("placa") String placa) {
         try {
@@ -144,12 +145,14 @@ public class FacturaControlador {
             }
     }
 
+    // Buscar factura por placa
     @GetMapping("/placa")
     public ResponseEntity<List<Factura>> obtenerFacturasPorPlaca(@PathVariable String placa) {
         List<Factura> facturas = facturaInt.findByPlaca(placa);
         return ResponseEntity.ok(facturas);
     }
 
+    // Eliminar factura
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarFactura(@PathVariable Integer id) {
         facturaInt.deleteById(id);

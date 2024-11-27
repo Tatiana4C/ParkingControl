@@ -200,16 +200,24 @@ public class FacturaImp implements FacturaInt {
         BigDecimal total;
 
         if (horas < 12) {
-
+            // Cobrar por fracción
             long horasACobrar = horas + (duracion.toMinutesPart() > 5 ? 1 : 0);
             total = tarifaFraccion.multiply(BigDecimal.valueOf(horasACobrar));
-        } else {
 
+        } else if (horas >= 12 && horas < 24) {
+            // Cobrar tarifa diaria si está entre 12 y 24 horas
+            total = tarifaDiaria;
+
+        } else {
+            // Cobrar días completos más las horas restantes
             long dias = horas / 24;
             long horasRestantes = horas % 24;
-
-            total = tarifaDiaria.multiply(BigDecimal.valueOf(dias))
-            .add(tarifaFraccion.multiply(BigDecimal.valueOf(horasRestantes)));
+        
+            // Calcular el costo de las horas restantes como fracciones
+            BigDecimal costoHorasRestantes = tarifaFraccion.multiply(BigDecimal.valueOf(horasRestantes));
+        
+            // Sumar el costo de los días completos y las horas restantes
+            total = tarifaDiaria.multiply(BigDecimal.valueOf(dias)).add(costoHorasRestantes);
         }
         
         System.out.println("Tarifa Fracción: " + tarifaFraccion);
