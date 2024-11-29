@@ -195,28 +195,28 @@ public class FacturaImp implements FacturaInt {
 
         Duration duracion = Duration.between(vehiculo.getFechaIngreso(), horaSalida);
         long horas = duracion.toHours();
+        int minutosRestantes = duracion.toMinutesPart();
+        
+        // Este sirve para en factura poner la cantidad de minutos que estuvo en el parqueadero
         int duracionEnMinutos = (int) duracion.toMinutes();
-
+        
+        // Redondear las horas si los minutos son mayores a 5
+        if (minutosRestantes > 5) {
+            horas++;
+        }
+        
         BigDecimal total;
-
+        
         if (horas < 12) {
             // Cobrar por fracción
-            long horasACobrar = horas + (duracion.toMinutesPart() > 5 ? 1 : 0);
-            total = tarifaFraccion.multiply(BigDecimal.valueOf(horasACobrar));
-        
-        } else if (horas >= 12 && horas < 24) {
+            total = tarifaFraccion.multiply(BigDecimal.valueOf(horas));
+        } else if (horas >= 12 && horas <= 24) {
             // Cobrar tarifa diaria si está entre 12 y 24 horas
             total = tarifaDiaria;
-        
         } else {
             // Cobrar días completos más las horas restantes
             long dias = horas / 24;
             long horasRestantes = horas % 24;
-        
-            // Redondear las horas restantes si los minutos son mayores a 5
-            if (duracion.toMinutesPart() > 5) {
-                horasRestantes++;
-            }
         
             BigDecimal costoHorasRestantes;
         
